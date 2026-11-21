@@ -1,0 +1,7 @@
+build/*
+FODDER/
+man/
+Archive/
+src/source
+docs/doxygen_out
+docs/fpm-ford
