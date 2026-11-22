@@ -225,14 +225,31 @@ integer function drv_HPGT_devcpy()
       use m_draw_drv_hpgt
      drv_HPGT_devcpy      = HPGT_draw_devcpy()
       end function
+
+integer function drv_SIXEL_devcpy()
+       use m_draw_drv_sixel
+      drv_SIXEL_devcpy       = SIXEL_draw_devcpy()
+       end function
+
+integer function drv_sixel_low_devcpy()
+   use m_draw_drv_sixel
+      drv_sixel_low_devcpy   = sixel_low_draw_devcpy()
+   end function
+
 integer function drv_X11_devcpy()
        use m_draw_drv_x11
       drv_X11_devcpy       = X11_draw_devcpy()
        end function
+
 integer function drv_x11_low_devcpy()
    use m_draw_drv_x11
       drv_x11_low_devcpy   = x11_low_draw_devcpy()
    end function
+
+integer function drv_ansi_devcpy()
+       use m_draw_drv_ansi
+      drv_ansi_devcpy       = ansi_draw_devcpy()
+       end function
 
 subroutine draw_vexit()
    use m_draw_drivers, only: mod_vexit => draw_vexit

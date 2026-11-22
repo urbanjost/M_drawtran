@@ -27,7 +27,10 @@ contains
 
    subroutine draw_curvebasis(basis)
       real(real32), intent(in) :: basis(4,4)
-      call draw_copymatrix(basismatrix, basis)
+      ! Note: If m_draw_patches calls draw_curvebasis with an already-transposed
+      ! matrix, use draw_copymatrix here and call draw_copytranspose in the
+      ! public curvebasis() wrapper instead.
+      call draw_copytranspose(basismatrix, basis)
    end subroutine draw_curvebasis
 
    subroutine draw_make_prec()
@@ -103,13 +106,13 @@ contains
    end subroutine draw_rcurve
 
    subroutine draw_curve(geom)
-      real(real32), intent(in) :: geom(4,3)
+      real(real32), intent(in) :: geom(3,4)
       real(real32) :: tmp(4,4)
 
       if (vdevice%initialized == 0) call draw_verror("curve: draw not initialized")
 
-      tmp(1:4, 1:3) = geom(1:4, 1:3)
-      tmp(1:4, 4) = 1.0_real32
+      tmp(1:4, 1:3) = transpose(geom(1:3, 1:4))
+      tmp(1:4, 4)   = 1.0_real32
 
       call draw_rcurve(tmp)
    end subroutine draw_curve
@@ -151,7 +154,6 @@ contains
             else
                call draw_clip(vdevice%cpWtrans, r_row)
             end if
-            r(1, 1:4) = r_row
          end if
       end do
 
@@ -165,14 +167,14 @@ contains
 
    subroutine draw_curven(n, geom)
       integer, intent(in) :: n
-      real(real32), intent(in) :: geom(n, 3)
+      real(real32), intent(in) :: geom(3, n)
       integer :: i
 
       if (vdevice%initialized == 0) call draw_verror("curven: draw not initialized")
       if (n < 4) call draw_verror("curven: not enough points in geometry matrix")
 
       do i = 1, n - 3
-         call draw_curve(geom(i:i+3, 1:3))
+         call draw_curve(geom(1:3, i:i+3))
       end do
    end subroutine draw_curven
 

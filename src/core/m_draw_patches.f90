@@ -29,12 +29,12 @@ module m_draw_patches
 
 contains
 
-   subroutine draw_patchbasis(tb, ub)
-      real(real32), intent(in) :: tb(4,4), ub(4,4)
-      if (vdevice%initialized == 0) call draw_verror("patchbasis: draw not initialized")
-      call draw_copymatrix(tbasis, tb)
-      call draw_copytranspose(ubasis, ub)
-   end subroutine draw_patchbasis
+    subroutine draw_patchbasis(tb, ub)
+       real(real32), intent(in) :: tb(4,4), ub(4,4)
+       if (vdevice%initialized == 0) call draw_verror("patchbasis: draw not initialized")
+       call draw_copytranspose(tbasis, tb)
+       call draw_copymatrix(ubasis, ub)
+    end subroutine draw_patchbasis
 
    subroutine draw_patchprecision(tseg, useg)
       integer, intent(in) :: tseg, useg

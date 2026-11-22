@@ -26,9 +26,9 @@ contains
 
    subroutine draw_rect(x1, y1, x2, y2)
       real(real32), intent(in) :: x1, y1, x2, y2
-      logical :: started
-      integer :: sync, idum
-      type(Token), pointer :: tok(:)
+      logical                  :: started
+      integer                  :: sync, idum
+      type(Token), pointer     :: tok(:)
 
       if (vdevice%initialized == 0) call draw_verror("rect: draw not initialized")
 
@@ -52,9 +52,9 @@ contains
       sync = vdevice%sync
       if (sync /= 0) vdevice%sync = 0
 
-      call draw_move2(x1, y1)
+      call draw_move2(x1, y1)    
       call draw_draw2(x2, y1)
-      call draw_draw2(x2, y2)
+      call draw_draw2(x2, y2)   
       call draw_draw2(x1, y2)
 
       if (started) then

@@ -24,15 +24,6 @@ module m_draw_types
 !   integer, parameter, public :: D_CYAN    = 6
 !   integer, parameter, public :: D_WHITE   = 7
 !
-!   integer, parameter, public :: BLACK   = 0
-!   integer, parameter, public :: RED     = 1
-!   integer, parameter, public :: GREEN   = 2
-!   integer, parameter, public :: YELLOW  = 3
-!   integer, parameter, public :: BLUE    = 4
-!   integer, parameter, public :: MAGENTA = 5
-!   integer, parameter, public :: CYAN    = 6
-!   integer, parameter, public :: WHITE   = 7
- 
    ! Hershey text justification
    integer, parameter, public :: D_XCENTERED = 1
    integer, parameter, public :: D_YCENTERED = 2

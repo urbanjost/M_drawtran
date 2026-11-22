@@ -27,22 +27,40 @@ module m_draw_drivers
 
    ! External driver registration hooks (implemented in driver modules)
    interface
+
+      integer function drv_ansi_devcpy()
+      end function drv_ansi_devcpy
+
+      integer function drv_SIXEL_devcpy()
+      end function drv_SIXEL_devcpy
+
+      integer function drv_sixel_low_devcpy()
+      end function drv_sixel_low_devcpy
+
       integer function drv_X11_devcpy()
       end function drv_X11_devcpy
+
       integer function drv_x11_low_devcpy()
       end function drv_x11_low_devcpy
+
       integer function drv_TEK_devcpy()
       end function drv_TEK_devcpy
+
       integer function drv_XTEK_devcpy()
       end function drv_XTEK_devcpy
+
       integer function drv_PS_devcpy()
       end function drv_PS_devcpy
+
       integer function drv_PSP_devcpy()
       end function drv_PSP_devcpy
+
       integer function drv_PPSC_devcpy()
       end function drv_PPSC_devcpy
+
       integer function drv_PPSG_devcpy()
       end function drv_PPSG_devcpy
+
       integer function drv_PSC_devcpy()
       end function drv_PSC_devcpy
       integer function drv_PSG_devcpy()
@@ -208,6 +226,9 @@ contains
       if (sdevice(1:3) == "nil") then; idum = drv_NIL_devcpy()
       else if (sdevice(1:3) == "X11") then; idum = drv_X11_devcpy()
       else if (sdevice(1:3) == "x11") then; idum = drv_x11_low_devcpy()
+      else if (sdevice(1:5) == "SIXEL") then; idum = drv_SIXEL_devcpy()
+      else if (sdevice(1:5) == "sixel") then; idum = drv_sixel_low_devcpy()
+      else if (sdevice(1:4) == "ansi") then; idum = drv_ansi_devcpy()
       else if (sdevice(1:3) == "rtf") then; idum = drv_RTF_devcpy()
       else if (sdevice(1:3) == "svg") then; idum = drv_SVG_devcpy()
       else if (sdevice(1:4) == "xfig") then; idum = drv_XFIG_devcpy()
