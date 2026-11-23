@@ -1,0 +1,12 @@
+!>
+!!##NAME
+!!    popviewport(3f) - [M_draw:VIEWPORT] Retrieve last viewport
+!!    (LICENSE:PD)
+!!
+!!##SYNOPSIS
+!!
+!!          subroutine popviewport()
+!!
+!!##DESCRIPTION
+!!
+!!    Retrieve last viewport.

@@ -7,7 +7,7 @@
 
 program test_mdraw_unit
    use, intrinsic :: iso_fortran_env, only: real32, int16, error_unit
-   use m_core
+   use m_engine
    implicit none
 
    integer :: failures = 0
@@ -118,12 +118,12 @@ contains
       call assert_near(t,  0.75_real32, 1.0e-6_real32, "viewport top", fail_count)
 
       ! Attribute push/pop
-      call draw_color(RED)
+      call draw_color(D_RED)
       call draw_pushattributes()
-      call draw_color(BLUE)
-      call assert_int(vdevice%attr%a%color, BLUE, "pushed color", fail_count)
+      call draw_color(D_BLUE)
+      call assert_int(vdevice%attr%a%color, D_BLUE, "pushed color", fail_count)
       call draw_popattributes()
-      call assert_int(vdevice%attr%a%color, RED, "popped color", fail_count)
+      call assert_int(vdevice%attr%a%color, D_RED, "popped color", fail_count)
 
       call draw_vexit()
    end subroutine test_stacks_and_viewport
@@ -144,17 +144,17 @@ contains
       call draw_circle(0.1_real32, 0.1_real32, 0.2_real32)
       call draw_closeobj()
 
-      call assert_int(draw_isobj(obj_id), 1, "isobj before save", fail_count)
+      call assert_int(merge(1,0,draw_isobj(obj_id)), 1, "isobj before save", fail_count)
 
       call draw_saveobj(obj_id, "test_obj.bin")
       inquire(file="test_obj.bin", exist=exists)
       call assert_int(merge(1, 0, exists), 1, "saveobj file exists", fail_count)
 
       call draw_delobj(obj_id)
-      call assert_int(draw_isobj(obj_id), 0, "isobj after del", fail_count)
+      call assert_int(merge(1,0,draw_isobj(obj_id)), 0, "isobj after del", fail_count)
 
       call draw_loadobj(obj_id, "test_obj.bin")
-      call assert_int(draw_isobj(obj_id), 1, "isobj after load", fail_count)
+      call assert_int(merge(1,0,draw_isobj(obj_id)), 1, "isobj after load", fail_count)
 
       call draw_callobj(obj_id)
       call draw_getgp2(gx, gy)
@@ -189,11 +189,11 @@ contains
          call draw_voutput(trim(fname))
          call draw_vinit(trim(drivers(i)))
          call draw_ortho2(-1.0_real32, 1.0_real32, -1.0_real32, 1.0_real32)
-         call draw_color(RED)
+         call draw_color(D_RED)
          call draw_polyfill(1)
          call draw_poly2(3, tri)
          call draw_polyfill(0)
-         call draw_color(BLUE)
+         call draw_color(D_BLUE)
          call draw_rect(-0.8_real32, -0.8_real32, 0.8_real32, 0.8_real32)
          call draw_vexit()
 

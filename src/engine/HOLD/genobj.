@@ -1,0 +1,10 @@
+!>
+!!##NAME
+!!    genobj(3f) - [M_draw:OBJECT] Returns a unique object identifier.
+!!    (LICENSE:PD)
+!!
+!!##SYNOPSIS
+!!
+!!         integer function genobj()
+!!##DESCRIPTION
+!!    Returns a unique object identifier.

@@ -1,0 +1,10 @@
+!>
+!!##NAME
+!!    curvebasis(3f) - [M_draw:CURVE] Define a basis matrix for a curve.
+!!    (LICENSE:PD)
+!!##SYNOPSIS
+!!
+!!          subroutine curvebasis(basis)
+!!          real,intent(in) :: basis(4,4)
+!!##DESCRIPTION
+!!    Define a basis matrix for a curve.

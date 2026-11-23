@@ -458,14 +458,24 @@ contains
       end if
       X11_checkkey = 0
    end function X11_checkkey
-   integer function X11_locator(wx, wy)
-      integer, intent(out) :: wx, wy
-      integer(c_long) :: rootw, childw
-      integer(c_int) :: rx, ry, mask, idum
-      idum = XQueryPointer(display, winder, rootw, childw, rx, ry, wx, wy, mask)
-      wy = vdevice%sizeSy - wy
-      X11_locator = ishft(mask, -8)
-   end function X11_locator
+!   integer function X11_locator(wx, wy)
+!      integer, intent(out) :: wx, wy
+!      integer(c_long) :: rootw, childw
+!      integer(c_int) :: rx, ry, mask, idum
+!      idum = XQueryPointer(display, winder, rootw, childw, rx, ry, wx, wy, mask)
+!      wy = vdevice%sizeSy - wy
+!      X11_locator = ishft(mask, -8)
+!   end function X11_locator
+
+    integer function X11_locator(wx, wy)
+       integer, intent(out) :: wx, wy
+       integer(c_long) :: rootw, childw
+       integer(c_int) :: rx, ry, mask, idum
+       idum = XQueryPointer(display, winder, rootw, childw, rx, ry, wx, wy, mask)
+       wy = vdevice%sizeSy - wy
+       X11_locator = iand(ishft(mask, -8), 7)
+    end function X11_locator
+
    integer function X11_clear()
       integer :: idum
       idum = X11_RESIZE()
@@ -475,6 +485,7 @@ contains
       call XFlush(display)
       X11_clear = UNUSED
    end function X11_clear
+
    integer function X11_color(ind_in)
       integer, intent(in) :: ind_in
       integer :: ind, lw
@@ -488,6 +499,7 @@ contains
       end if
       X11_color = UNUSED
    end function X11_color
+
    integer function X11_setlw(ind_in)
       integer, intent(in) :: ind_in
       integer :: ind, lw

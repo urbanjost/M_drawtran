@@ -1,9 +1,57 @@
+# TOML file for fpm as described at https://fpm.fortran-lang.org/en/spec/manifest.html
 name = "M_drawtran"
 version = "0.1.0"
-license = "license"
+license = "MIT"
 author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
-copyright = "Copyright 2026, John S. Urban"
+copyright = "Copyright 2020,2026, John S. Urban"
+
+description = "basic vector graphics package"
+categories = ["graphics"]
+keywords = ["fortran", "draw", "plot", "graphics"]
+homepage = "https://github.com/urbanjost/M_drawtran.git"
+
+[fortran]
+# Fortran features
+# enable and disable specific language features
+   implicit-typing = false    # whether default implicit typing should be allowed.  The default option is false.
+   implicit-external = false  # whether external interfaces can be declared implicitly. The default option is false.
+   source-form = "free"       # free|fixed|default
 
 [build]
-link = ["X11"]
+   link = ["X11"]           # Linking against libraries
+   auto-executables = true  # Toggle automatic discovery of executables
+   auto-examples = true     # Toggle automatic discovery of example programs
+   auto-tests = true        # Toggle automatic discovery of test executables
+   module-naming = false
+
+[library]
+   source-dir = "src"
+
+[install]
+   library = true
+
+[[executable]]
+   name="make_hershey"
+   source-dir="app/MAKE_HERSHEY"
+   main="make_hershey.f90"
+
+[[executable]]
+   name="h2v"
+   source-dir="app/MAKE_HERSHEY"
+   main="h2v.c"
+
+[[executable]]
+   name = "slices"
+   source-dir = "app/slices"
+   main = "slice.f90"
+
+[executable.dependencies]
+   M_io         =  {  git  =  "https://github.com/urbanjost/M_io.git"         }
+   M_strings    =  {  git  =  "https://github.com/urbanjost/M_strings.git"    }
+   M_kracken95  =  {  git  =  "https://github.com/urbanjost/M_kracken95.git"  }
+   M_framework  =  {  git  =  "https://github.com/urbanjost/M_framework.git"  }
+   #M_io         =  {  namespace = "GPF" }
+   #M_strings    =  {  namespace = "GPF" }
+   #M_kracken95  =  {  namespace = "GPF" }
+   #M_framework  =  {  namespace = "GPF" }

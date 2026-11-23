@@ -177,7 +177,9 @@
            call drawhull(x2, y2, z2)
            call patch(x2, y2, z2)
      !
+           write(*,*)'GOT HERE A:'
            idum=getkey()
+           write(*,*)'GOT HERE B:'
      !
      !     Save viewport 1 again and reset to viewport 2
      !

@@ -47,12 +47,12 @@
 
       INFINITE: do
          bt = slocator(x, y)
-         !! write(*,*)'slocator returned ',bt,' and coordinates ',x,y
+         write(*,*)'slocator returned ',bt,' and coordinates ',x,y
          if (bt .eq. -1) then
             call vexit()
             print*,'No locator device found'
             stop
-         elseif (bt .eq. 2) then
+         elseif (bt .ge. 2) then
             call vexit()
             stop
          elseif (bt .eq. 0) then

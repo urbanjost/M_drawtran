@@ -1,0 +1,13 @@
+!>
+!!##NAME
+!!    popdev(3f) - [M_draw:DEVICE] pop device from stack created by pushdev.
+!!    (LICENSE:PD)
+!!
+!!##SYNOPSIS
+!!
+!!           subroutine popdev()
+!!
+!!##DESCRIPTION
+!!
+!!    Pops a device off the device stack and reinstates the previously pushed
+!!    device.

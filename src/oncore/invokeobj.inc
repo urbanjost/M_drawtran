@@ -29,7 +29,7 @@
 !!  Sample program
 !!
 !!    program demo_invokeobj
-!!    use M_core
+!!    use M_engine
 !!    implicit none
 !!    real :: a, angle, step
 !!    integer :: i, idum
@@ -84,7 +84,7 @@
 !!##AUTHO
 !!    John S. Urban
 !!##LICENSE
-!!    MIT           
+!!    MIT
 subroutine invokeobj(xt,yt,zt,xs,ys,zs,xr,yr,zr,iobject)
 
 ! ident_3="@(#) M_draw invokeobj(3f) invoke object with specified transformation applied and then restored"

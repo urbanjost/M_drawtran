@@ -1,0 +1,12 @@
+!>
+!!##NAME
+!!    popattributes(3f) - [M_draw:ATTRIBUTE_STACK] Restore attributes to what they were at last pushattributes().
+!!    (LICENSE:PD)
+!!
+!!##SYNOPSIS
+!!
+!!          subroutine popattributes()
+!!
+!!##DESCRIPTION
+!!
+!!    Restore the attributes to what they were at the last pushattributes().

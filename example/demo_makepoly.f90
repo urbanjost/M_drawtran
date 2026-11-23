@@ -1,11 +1,14 @@
      program demo_makepoly
-     use :: M_draw
+     use :: M_draw, only : prefsize, vinit, ortho2, linewidth, color, clear
+     use :: M_draw, only : makepoly, rect, closepoly
+     use :: M_draw, only : getkey, vexit, move2, draw2
+     use :: M_draw, only : D_WHITE, D_BLACK
      implicit none
      integer,parameter :: wide=640, tall=640
-     integer :: rows, xoff, yoff, box_sz
-     integer :: i20, i30, ncols, nrows, ilines
-     real    :: bottom, left, sun_radius, planet_radius, planet_offset
-     integer :: ipaws
+     integer           :: rows, xoff, yoff, box_sz
+     integer           :: i20, i30, ncols, nrows, ilines
+     real              :: bottom, left, sun_radius, planet_radius, planet_offset
+     integer           :: ipaws
         call prefsize(wide,tall)
         call vinit(' ') ! start graphics using device $M_DRAW_DEVICE
         call ortho2(0.0, real(wide), 0.0, real(tall) )

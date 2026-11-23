@@ -1,0 +1,13 @@
+!>
+!!##NAME
+!!    draw(3f) - [M_draw:DRAW] Draw from current graphics position to (x, y, z)
+!!    (LICENSE:PD)
+!!
+!!##SYNOPSIS
+!!
+!!          subroutine draw(x, y, z)
+!!          real x, y, z
+!!##DESCRIPTION
+!!
+!!    Draw from current graphics position to (x, y, z). (x, y, z) is a
+!!    point in world coordinates.

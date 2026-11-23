@@ -18,7 +18,7 @@
      ! in x, y, and z. Note that positive z is towards us.
         call ortho(-10.0, 10.0, -10.0, 10.0, 10.0, -10.0)
         call color(D_YELLOW)
-     ! write out the string "Polygon from poly()" in the
+     ! write out the string "Polygon from poly()" 
      ! starting at (-8.0, -4.0) and scaled to be 4.0 units long,
      ! 0.5 units high.
         call boxtext(-8.0, -4.0, 4.0, 0.5, 'Polygon from poly()')
