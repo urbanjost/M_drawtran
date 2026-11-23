@@ -236,6 +236,11 @@ integer function drv_sixel_low_devcpy()
       drv_sixel_low_devcpy   = sixel_low_draw_devcpy()
    end function
 
+integer function drv_gif_devcpy()
+       use m_draw_drv_gif
+      drv_gif_devcpy       = gif_draw_devcpy()
+       end function
+
 integer function drv_X11_devcpy()
        use m_draw_drv_x11
       drv_X11_devcpy       = X11_draw_devcpy()

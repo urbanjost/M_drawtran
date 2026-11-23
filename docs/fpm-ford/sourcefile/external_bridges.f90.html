@@ -88,7 +88,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 1.7% of total for source files.">245 statements</a>
+                 title=" 1.6% of total for source files.">249 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -137,7 +137,7 @@
       </a>
       <div id="funcs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/draw_newtokens.html">draw_newtokens</a>
+            <a class="list-group-item" href="../proc/draw_newtokens~2.html">draw_newtokens</a>
             <a class="list-group-item" href="../proc/draw_getkey.html">draw_getkey</a>
             <a class="list-group-item" href="../proc/drv_nil_devcpy.html">drv_NIL_devcpy</a>
             <a class="list-group-item" href="../proc/drv_vog_devcpy.html">drv_VOG_devcpy</a>
@@ -183,6 +183,7 @@
             <a class="list-group-item" href="../proc/drv_hpgt_devcpy.html">drv_HPGT_devcpy</a>
             <a class="list-group-item" href="../proc/drv_sixel_devcpy.html">drv_SIXEL_devcpy</a>
             <a class="list-group-item" href="../proc/drv_sixel_low_devcpy.html">drv_sixel_low_devcpy</a>
+            <a class="list-group-item" href="../proc/drv_gif_devcpy.html">drv_gif_devcpy</a>
             <a class="list-group-item" href="../proc/drv_x11_devcpy.html">drv_X11_devcpy</a>
             <a class="list-group-item" href="../proc/drv_x11_low_devcpy.html">drv_x11_low_devcpy</a>
             <a class="list-group-item" href="../proc/drv_ansi_devcpy.html">drv_ansi_devcpy</a>
@@ -197,15 +198,15 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/draw_makepoly.html">draw_makepoly</a>
-            <a class="list-group-item" href="../proc/draw_closepoly.html">draw_closepoly</a>
+            <a class="list-group-item" href="../proc/draw_makepoly~2.html">draw_makepoly</a>
+            <a class="list-group-item" href="../proc/draw_closepoly~2.html">draw_closepoly</a>
             <a class="list-group-item" href="../proc/draw_font~2.html">draw_font</a>
             <a class="list-group-item" href="../proc/draw_color.html">draw_color</a>
             <a class="list-group-item" href="../proc/draw_textsize~2.html">draw_textsize</a>
             <a class="list-group-item" href="../proc/draw_linewidth.html">draw_linewidth</a>
             <a class="list-group-item" href="../proc/draw_mapcolor.html">draw_mapcolor</a>
             <a class="list-group-item" href="../proc/draw_vexit.html">draw_vexit</a>
-            <a class="list-group-item" href="../proc/draw_dashline.html">draw_dashline</a>
+            <a class="list-group-item" href="../proc/draw_dashline~2.html">draw_dashline</a>
         </div>
       </div>
     </div>
@@ -472,32 +473,37 @@
 <a id="ln-236" name="ln-236" href="#ln-236"></a><span class="w">      </span><span class="n">drv_sixel_low_devcpy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">sixel_low_draw_devcpy</span><span class="p">()</span>
 <a id="ln-237" name="ln-237" href="#ln-237"></a><span class="w">   </span><span class="k">end function</span>
 <a id="ln-238" name="ln-238" href="#ln-238"></a>
-<a id="ln-239" name="ln-239" href="#ln-239"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_X11_devcpy</span><span class="p">()</span>
-<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">       </span><span class="k">use </span><span class="n">m_draw_drv_x11</span>
-<a id="ln-241" name="ln-241" href="#ln-241"></a><span class="w">      </span><span class="n">drv_X11_devcpy</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">X11_draw_devcpy</span><span class="p">()</span>
+<a id="ln-239" name="ln-239" href="#ln-239"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_gif_devcpy</span><span class="p">()</span>
+<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">       </span><span class="k">use </span><span class="n">m_draw_drv_gif</span>
+<a id="ln-241" name="ln-241" href="#ln-241"></a><span class="w">      </span><span class="n">drv_gif_devcpy</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">gif_draw_devcpy</span><span class="p">()</span>
 <a id="ln-242" name="ln-242" href="#ln-242"></a><span class="w">       </span><span class="k">end function</span>
 <a id="ln-243" name="ln-243" href="#ln-243"></a>
-<a id="ln-244" name="ln-244" href="#ln-244"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_x11_low_devcpy</span><span class="p">()</span>
-<a id="ln-245" name="ln-245" href="#ln-245"></a><span class="w">   </span><span class="k">use </span><span class="n">m_draw_drv_x11</span>
-<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="w">      </span><span class="n">drv_x11_low_devcpy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">x11_low_draw_devcpy</span><span class="p">()</span>
-<a id="ln-247" name="ln-247" href="#ln-247"></a><span class="w">   </span><span class="k">end function</span>
+<a id="ln-244" name="ln-244" href="#ln-244"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_X11_devcpy</span><span class="p">()</span>
+<a id="ln-245" name="ln-245" href="#ln-245"></a><span class="w">       </span><span class="k">use </span><span class="n">m_draw_drv_x11</span>
+<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="w">      </span><span class="n">drv_X11_devcpy</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">X11_draw_devcpy</span><span class="p">()</span>
+<a id="ln-247" name="ln-247" href="#ln-247"></a><span class="w">       </span><span class="k">end function</span>
 <a id="ln-248" name="ln-248" href="#ln-248"></a>
-<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_ansi_devcpy</span><span class="p">()</span>
-<a id="ln-250" name="ln-250" href="#ln-250"></a><span class="w">       </span><span class="k">use </span><span class="n">m_draw_drv_ansi</span>
-<a id="ln-251" name="ln-251" href="#ln-251"></a><span class="w">      </span><span class="n">drv_ansi_devcpy</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">ansi_draw_devcpy</span><span class="p">()</span>
-<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">       </span><span class="k">end function</span>
+<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_x11_low_devcpy</span><span class="p">()</span>
+<a id="ln-250" name="ln-250" href="#ln-250"></a><span class="w">   </span><span class="k">use </span><span class="n">m_draw_drv_x11</span>
+<a id="ln-251" name="ln-251" href="#ln-251"></a><span class="w">      </span><span class="n">drv_x11_low_devcpy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">x11_low_draw_devcpy</span><span class="p">()</span>
+<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">   </span><span class="k">end function</span>
 <a id="ln-253" name="ln-253" href="#ln-253"></a>
-<a id="ln-254" name="ln-254" href="#ln-254"></a><span class="k">subroutine </span><span class="n">draw_vexit</span><span class="p">()</span>
-<a id="ln-255" name="ln-255" href="#ln-255"></a><span class="w">   </span><span class="k">use </span><span class="n">m_draw_drivers</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">mod_vexit</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">draw_vexit</span>
-<a id="ln-256" name="ln-256" href="#ln-256"></a><span class="w">   </span><span class="k">call </span><span class="n">mod_vexit</span><span class="p">()</span>
-<a id="ln-257" name="ln-257" href="#ln-257"></a><span class="k">end subroutine </span><span class="n">draw_vexit</span>
+<a id="ln-254" name="ln-254" href="#ln-254"></a><span class="kt">integer </span><span class="k">function </span><span class="n">drv_ansi_devcpy</span><span class="p">()</span>
+<a id="ln-255" name="ln-255" href="#ln-255"></a><span class="w">       </span><span class="k">use </span><span class="n">m_draw_drv_ansi</span>
+<a id="ln-256" name="ln-256" href="#ln-256"></a><span class="w">      </span><span class="n">drv_ansi_devcpy</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">ansi_draw_devcpy</span><span class="p">()</span>
+<a id="ln-257" name="ln-257" href="#ln-257"></a><span class="w">       </span><span class="k">end function</span>
 <a id="ln-258" name="ln-258" href="#ln-258"></a>
-<a id="ln-259" name="ln-259" href="#ln-259"></a><span class="k">subroutine </span><span class="n">draw_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
-<a id="ln-260" name="ln-260" href="#ln-260"></a><span class="w">   </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">real32</span>
-<a id="ln-261" name="ln-261" href="#ln-261"></a><span class="w">   </span><span class="k">use </span><span class="n">m_draw_draw</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">mod_dashline</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">draw_dashline</span>
-<a id="ln-262" name="ln-262" href="#ln-262"></a><span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">real32</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<a id="ln-263" name="ln-263" href="#ln-263"></a><span class="w">   </span><span class="k">call </span><span class="n">mod_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
-<a id="ln-264" name="ln-264" href="#ln-264"></a><span class="k">end subroutine </span><span class="n">draw_dashline</span>
+<a id="ln-259" name="ln-259" href="#ln-259"></a><span class="k">subroutine </span><span class="n">draw_vexit</span><span class="p">()</span>
+<a id="ln-260" name="ln-260" href="#ln-260"></a><span class="w">   </span><span class="k">use </span><span class="n">m_draw_drivers</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">mod_vexit</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">draw_vexit</span>
+<a id="ln-261" name="ln-261" href="#ln-261"></a><span class="w">   </span><span class="k">call </span><span class="n">mod_vexit</span><span class="p">()</span>
+<a id="ln-262" name="ln-262" href="#ln-262"></a><span class="k">end subroutine </span><span class="n">draw_vexit</span>
+<a id="ln-263" name="ln-263" href="#ln-263"></a>
+<a id="ln-264" name="ln-264" href="#ln-264"></a><span class="k">subroutine </span><span class="n">draw_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
+<a id="ln-265" name="ln-265" href="#ln-265"></a><span class="w">   </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">real32</span>
+<a id="ln-266" name="ln-266" href="#ln-266"></a><span class="w">   </span><span class="k">use </span><span class="n">m_draw_draw</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">mod_dashline</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">draw_dashline</span>
+<a id="ln-267" name="ln-267" href="#ln-267"></a><span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">real32</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a id="ln-268" name="ln-268" href="#ln-268"></a><span class="w">   </span><span class="k">call </span><span class="n">mod_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
+<a id="ln-269" name="ln-269" href="#ln-269"></a><span class="k">end subroutine </span><span class="n">draw_dashline</span>
 </pre></div>
 
       </section>
@@ -519,7 +525,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2026-11-23 00:37 +0000             </p>
+ on 2026-11-23 03:23 +0000             </p>
           </div>
         </div>
         <br>

@@ -88,20 +88,19 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.7% of total for procedures.">29 statements</a>
+                 title=" 0.2% of total for procedures.">7 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/m_draw_newtokens.f90"> Source File</a>
+              <a href="../src/external_bridges.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/m_draw_newtokens.f90.html'>m_draw_newtokens.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/m_draw_newtokens.html'>m_draw_newtokens</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/external_bridges.f90.html'>external_bridges.f90</a></li>
             <li class="breadcrumb-item active" aria-current="page">draw_newtokens</li>
           </ol>
         </nav>
@@ -155,9 +154,22 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public  function draw_newtokens(num) result(addr)  
+    <h2> function draw_newtokens(num) result(toks)  
 </h2>
-    
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='../module/m_draw_types.html'>m_draw_types</a></li>
+                  <li class="list-inline-item"><a href='../module/m_draw_newtokens.html'>m_draw_newtokens</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
 
 
 
@@ -174,7 +186,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-num~9"></span>
+              <span class="anchor" id="variable-num~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -192,7 +204,7 @@
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-addr"></span>
+          <span class="anchor" id="variable-toks~10"></span>
           type(<a href='../type/token.html'>Token</a>), pointer, (:)
         </small>
       </h3>
@@ -211,42 +223,13 @@
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">function </span><span class="n">draw_newtokens</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
-<span class="w">      </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">num</span>
-<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">Token</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">addr</span><span class="p">(:)</span>
-<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">TokList</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tl</span>
-<span class="w">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sz</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">,</span><span class="w"> </span><span class="n">start_idx</span>
-<span class="w">      </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">need_alloc</span>
-
-<span class="w">      </span><span class="n">need_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="nb">associated</span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">tokens</span><span class="p">)</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">need_alloc</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">         if</span><span class="w"> </span><span class="p">(</span><span class="n">num</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MAXTOKS</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">current</span><span class="p">%</span><span class="nb">count</span><span class="p">)</span><span class="w"> </span><span class="n">need_alloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
-<span class="w">      </span><span class="k">end if</span>
-
-<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">need_alloc</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">         allocate</span><span class="p">(</span><span class="n">tl</span><span class="p">,</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
-<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">draw_verror</span><span class="p">(</span><span class="s2">"newtokens: allocate returns error"</span><span class="p">)</span>
-
-<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">tokens</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<span class="k">            </span><span class="n">current</span><span class="p">%</span><span class="n">next</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tl</span>
-<span class="w">         </span><span class="k">else</span>
-<span class="k">            </span><span class="n">vdevice</span><span class="p">%</span><span class="n">tokens</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tl</span>
-<span class="w">         </span><span class="k">end if</span>
-
-<span class="k">         </span><span class="n">tl</span><span class="p">%</span><span class="nb">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">         </span><span class="n">tl</span><span class="p">%</span><span class="n">next</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
-<span class="w">         </span><span class="n">sz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="n">MAXTOKS</span><span class="p">)</span>
-
-<span class="w">         </span><span class="k">allocate</span><span class="p">(</span><span class="n">tl</span><span class="p">%</span><span class="n">toks</span><span class="p">(</span><span class="n">sz</span><span class="p">),</span><span class="w"> </span><span class="nb">stat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
-<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">draw_verror</span><span class="p">(</span><span class="s2">"newtokens: allocate returns error"</span><span class="p">)</span>
-
-<span class="w">         </span><span class="n">current</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tl</span>
-<span class="w">      </span><span class="k">end if</span>
-
-<span class="k">      </span><span class="n">start_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="p">%</span><span class="nb">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">      </span><span class="n">addr</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">current</span><span class="p">%</span><span class="n">toks</span><span class="p">(</span><span class="n">start_idx</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">start_idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">      </span><span class="n">current</span><span class="p">%</span><span class="nb">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="p">%</span><span class="nb">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span>
-<span class="w">   </span><span class="k">end function </span><span class="n">draw_newtokens</span>
+    <div class="hl codehilite"><pre><span></span><span class="k">function </span><span class="n">draw_newtokens</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span>
+<span class="w">   </span><span class="k">use </span><span class="n">m_draw_types</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">Token</span>
+<span class="w">   </span><span class="k">use </span><span class="n">m_draw_newtokens</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">mod_newtokens</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">draw_newtokens</span>
+<span class="w">   </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">num</span>
+<span class="w">   </span><span class="k">type</span><span class="p">(</span><span class="n">Token</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">toks</span><span class="p">(:)</span>
+<span class="w">   </span><span class="n">toks</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">mod_newtokens</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="k">end function </span><span class="n">draw_newtokens</span>
 </pre></div>
 
     </section>
@@ -270,7 +253,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2026-11-23 00:37 +0000             </p>
+ on 2026-11-23 03:23 +0000             </p>
           </div>
         </div>
         <br>

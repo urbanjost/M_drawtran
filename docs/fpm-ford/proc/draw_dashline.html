@@ -88,19 +88,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.2% of total for procedures.">6 statements</a>
+                 title=" 2.3% of total for procedures.">98 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/external_bridges.f90"> Source File</a>
+              <a href="../src/m_draw_draw.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/external_bridges.f90.html'>external_bridges.f90</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/m_draw_draw.f90.html'>m_draw_draw.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_draw_draw.html'>m_draw_draw</a></li>
             <li class="breadcrumb-item active" aria-current="page">draw_dashline</li>
           </ol>
         </nav>
@@ -154,22 +155,9 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2> subroutine draw_dashline(p0, p1)  
+    <h2>public  subroutine draw_dashline(p0, p1)  
 </h2>
-        <div class="card mb-4">
-      <h3 class="card-header card-title bg-light">Uses</h3>
-      <div class="card-body">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/m_draw_draw.html'>m_draw_draw</a></li>
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
-              </ul>
-            </li>
-        </ul>
-      </div>
-    </div>
-
+    
 
 
 
@@ -186,7 +174,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-p0"></span>
+              <span class="anchor" id="variable-p0~4"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -201,7 +189,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-p1"></span>
+              <span class="anchor" id="variable-p1~4"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -231,12 +219,124 @@
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">draw_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
-<span class="w">   </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">real32</span>
-<span class="w">   </span><span class="k">use </span><span class="n">m_draw_draw</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">mod_dashline</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">draw_dashline</span>
-<span class="w">   </span><span class="kt">real</span><span class="p">(</span><span class="n">real32</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">mod_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
-<span class="k">end subroutine </span><span class="n">draw_dashline</span>
+    <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">subroutine </span><span class="n">draw_dashline</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">p1</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">real32</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">vy</span><span class="p">,</span><span class="w"> </span><span class="k">sync</span><span class="p">,</span><span class="w"> </span><span class="n">idum</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">real32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span><span class="w"> </span><span class="n">dy</span><span class="p">,</span><span class="w"> </span><span class="n">dz</span><span class="p">,</span><span class="w"> </span><span class="n">dw</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="p">,</span><span class="w"> </span><span class="n">ldist</span><span class="p">,</span><span class="w"> </span><span class="n">tdist</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">real32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">Attribute</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span>
+
+<span class="w">      </span><span class="n">line</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.0_real32</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">vx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVx</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="w">         </span><span class="n">vy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVy</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="w">         </span><span class="n">idum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vdraw</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">vy</span><span class="p">)</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vx</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vy</span>
+<span class="w">         </span><span class="k">return</span>
+<span class="k">      end if</span>
+
+<span class="k">      </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span>
+<span class="w">      </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span>
+<span class="w">      </span><span class="n">dz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span>
+<span class="w">      </span><span class="n">dw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p0</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span>
+<span class="w">      </span><span class="n">ldist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dy</span><span class="o">*</span><span class="n">dy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dz</span><span class="o">*</span><span class="n">dz</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dw</span><span class="o">*</span><span class="n">dw</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ldist</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         if</span><span class="w"> </span><span class="p">(</span><span class="n">is_near</span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">            </span><span class="n">do_dash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checkdash</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">         </span><span class="k">end if</span>
+<span class="k">         </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ldist</span>
+
+<span class="w">         </span><span class="n">vx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVx</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="w">         </span><span class="n">vy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVy</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">do_dash</span><span class="p">)</span><span class="w"> </span><span class="n">idum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vdraw</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">vy</span><span class="p">)</span>
+
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vx</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vy</span>
+<span class="w">         </span><span class="k">return</span>
+<span class="k">      else</span>
+<span class="k">         sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="k">sync</span>
+<span class="k">         if</span><span class="w"> </span><span class="p">(</span><span class="k">sync</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="k">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">         </span><span class="n">tdist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">         </span><span class="k">call </span><span class="n">draw_copyvector</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="p">)</span>
+
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0_real32</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">tdist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_near</span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">               </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">               </span><span class="n">do_dash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checkdash</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">            </span><span class="k">end if</span>
+<span class="k">            </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tdist</span>
+
+<span class="w">            </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tdist</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ldist</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dz</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dw</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">            </span><span class="n">vx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVx</span><span class="p">(</span><span class="n">pd</span><span class="p">)</span>
+<span class="w">            </span><span class="n">vy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVy</span><span class="p">(</span><span class="n">pd</span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">do_dash</span><span class="p">)</span><span class="w"> </span><span class="n">idum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vdraw</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">vy</span><span class="p">)</span>
+<span class="w">            </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vx</span>
+<span class="w">            </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vy</span>
+<span class="w">         </span><span class="k">end if</span>
+
+<span class="k">         </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ldist</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ldist</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dz</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ldist</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dw</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ldist</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">dash</span>
+
+<span class="w">         </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">tdist</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ldist</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">dist</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_near</span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">               </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">               </span><span class="n">do_dash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checkdash</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">            </span><span class="k">end if</span>
+
+<span class="k">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dx</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dy</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dz</span>
+<span class="w">            </span><span class="n">pd</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dw</span>
+
+<span class="w">            </span><span class="n">vx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVx</span><span class="p">(</span><span class="n">pd</span><span class="p">)</span>
+<span class="w">            </span><span class="n">vy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVy</span><span class="p">(</span><span class="n">pd</span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">            </span><span class="n">tdist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tdist</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dist</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">do_dash</span><span class="p">)</span><span class="w"> </span><span class="n">idum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vdraw</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">vy</span><span class="p">)</span>
+<span class="w">            </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vx</span>
+<span class="w">            </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vy</span>
+<span class="w">         </span><span class="k">end do</span>
+
+<span class="k">         if</span><span class="w"> </span><span class="p">(</span><span class="n">is_near</span><span class="p">(</span><span class="n">line</span><span class="p">%</span><span class="n">dash</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">            </span><span class="n">do_dash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">checkdash</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="w">         </span><span class="k">end if</span>
+
+<span class="k">         </span><span class="n">dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_X</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Y</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_Z</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pd</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span>
+<span class="w">         </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dy</span><span class="o">*</span><span class="n">dy</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dz</span><span class="o">*</span><span class="n">dz</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dw</span><span class="o">*</span><span class="n">dw</span><span class="p">)</span>
+
+<span class="w">         </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">         </span><span class="n">vx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVx</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="w">         </span><span class="n">vy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw_WtoVy</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">do_dash</span><span class="p">)</span><span class="w"> </span><span class="n">idum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vdraw</span><span class="p">(</span><span class="n">vx</span><span class="p">,</span><span class="w"> </span><span class="n">vy</span><span class="p">)</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vx</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpVy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vy</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="k">sync</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">vdevice</span><span class="p">%</span><span class="k">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="n">idum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vsync</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">   end subroutine </span><span class="n">draw_dashline</span>
 </pre></div>
 
     </section>
@@ -260,7 +360,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2026-11-23 00:37 +0000             </p>
+ on 2026-11-23 03:23 +0000             </p>
           </div>
         </div>
         <br>
