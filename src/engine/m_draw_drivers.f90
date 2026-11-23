@@ -37,6 +37,9 @@ module m_draw_drivers
       integer function drv_sixel_low_devcpy()
       end function drv_sixel_low_devcpy
 
+      integer function drv_gif_devcpy()
+      end function drv_gif_devcpy
+
       integer function drv_X11_devcpy()
       end function drv_X11_devcpy
 
@@ -279,6 +282,7 @@ contains
       if (sdevice(1:3) == "nil") then; idum = drv_NIL_devcpy()
       else if (sdevice(1:3) == "X11") then; idum = drv_X11_devcpy()
       else if (sdevice(1:3) == "x11") then; idum = drv_x11_low_devcpy()
+      else if (sdevice(1:3) == "gif") then; idum = drv_gif_devcpy()
       else if (sdevice(1:5) == "SIXEL") then; idum = drv_SIXEL_devcpy()
       else if (sdevice(1:5) == "sixel") then; idum = drv_sixel_low_devcpy()
       else if (sdevice(1:4) == "ansi") then; idum = drv_ansi_devcpy()
@@ -387,6 +391,7 @@ contains
 !!        p6       Poskanzer portable binary pixmap file
 !!        xbm      X11 bitmap file
 !!        bm       bitmap format for atobm(1)
+!!        gif      animated gif file
 !!
 !!        PRODUCT INPUT FILES
 !!
