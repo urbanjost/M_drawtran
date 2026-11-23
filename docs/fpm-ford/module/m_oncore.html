@@ -1,0 +1,884 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Small vector-based graphics module in Fortran">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>M_oncore &ndash; M_drawtran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_drawtran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>M_oncore
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 1.4% of total for modules and submodules.">191 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/M_oncore.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_oncore.f90.html'>M_oncore.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">M_oncore</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_oncore.html#interface-page">page</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_oncore.html#proc-invokeobj">invokeobj</a>
+            <a class="list-group-item" href="../module/m_oncore.html#proc-pop">pop</a>
+            <a class="list-group-item" href="../module/m_oncore.html#proc-print">print</a>
+            <a class="list-group-item" href="../module/m_oncore.html#proc-push">push</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='m_engine.html'>M_engine</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      
+      <br>
+
+
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-page"></span>
+      <h3>public        interface <a href='../interface/page.html'>page</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine biggest_ortho2(xsmall, xlarge, ysmall, ylarge)  
+
+    </h3>
+  <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">page</span><span class="p">(</span><span class="mi">3</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">M_draw</span><span class="o">]</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">largest</span><span class="w"> </span><span class="n">viewport</span><span class="w"> </span><span class="n">available</span>
+<span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>subroutine page(xsmall,xlarge,ysmall,ylarge)
+real, intent=(in) :: xsmall
+real, intent=(in) :: xlarge
+real, intent=(in) :: ysmall
+real, intent=(in) :: ylarge
+
+subroutine page(xsize,ysize,icolor)
+real, intent=(in)    :: xsize
+real, intent=(in)    :: ysize
+integer, intent=(in) :: icolor
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code>FORM SUBROUTINE PAGE(XSMALL,XLARGE,YSMALL,YLARGE)
+
+Set the window to the rectangle defined by the corner points
+&lt;xsmall,ysmall&gt; and &lt;xlarge,ylarge&gt;.
+
+Also, given the window size, and assuming a one-to-one correspondence
+of window units (ie. an "x-unit" is as long as a "y-unit"), find the
+largest area on the display surface that has the same aspect ratio,
+and set the viewport to it.
+
+FORM SUBROUTINE PAGE(XSIZE,YSIZE,ICOLOR)
+
+Size the window to the rectangle defined by the corner points
+&lt;0.0,0.0&gt; and &lt;xsize,ysize&gt; and the viewport to the largest centered
+area that has the same aspect ratio, and set the background color to
+the value mapped to color ICOLOR.
+</code></pre></div>
+
+<h2 id="examples">EXAMPLES</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">program</span><span class="w"> </span><span class="nx">demo_page</span>
+<span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span>
+<span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span><span class="p">,</span><span class="w">    </span><span class="nx">only</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">D_BLACK</span><span class="p">,</span><span class="w">   </span><span class="nx">D_WHITE</span>
+<span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span><span class="p">,</span><span class="w">    </span><span class="nx">only</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">D_RED</span><span class="p">,</span><span class="w">     </span><span class="nx">D_GREEN</span><span class="p">,</span><span class="w">    </span><span class="nx">D_BLUE</span>
+<span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span><span class="p">,</span><span class="w">    </span><span class="nx">only</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">D_YELLOW</span><span class="p">,</span><span class="w">  </span><span class="nx">D_MAGENTA</span><span class="p">,</span><span class="w">  </span><span class="nx">D_CYAN</span>
+<span class="nx">implicit</span><span class="w"> </span><span class="nx">none</span>
+<span class="nx">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">ipaws</span>
+<span class="nx">real</span><span class="p">,</span><span class="nx">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">radius</span><span class="p">=</span><span class="m m-Double">25.0</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">prefsize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vinit</span><span class="p">(</span><span class="sc">' '</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="nx">using</span><span class="w"> </span><span class="nx">device</span><span class="w"> </span><span class="err">$</span><span class="nx">M_draw_DEVICE</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">page</span><span class="p">(</span><span class="o">-</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">linewidth</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">clear</span><span class="p">()</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_BLUE</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="o">-</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="o">-</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="o">-</span><span class="nx">radius</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_CYAN</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">circle</span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="nx">radius</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vflush</span><span class="p">()</span>
+<span class="w">   </span><span class="nx">ipaws</span><span class="p">=</span><span class="nx">getkey</span><span class="p">()</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vexit</span><span class="p">()</span>
+<span class="nx">end</span><span class="w"> </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_page</span>
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>MIT
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xsmall"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xsmall</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xlarge"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xlarge</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ysmall"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ysmall</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ylarge"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ylarge</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine page_rri(xsize, ysize, icolor)  
+
+    </h3>
+  <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="n">page_rri</span><span class="p">(</span><span class="mi">3</span><span class="n">fp</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">M_draw</span><span class="o">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">world</span><span class="w"> </span><span class="k">window</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">viewport</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">largest</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">aspect</span><span class="w"> </span><span class="n">ratio</span>
+<span class="w">   </span><span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<p>subroutine page_rri(xsize,ysize,icolor)</p>
+<div class="codehilite"><pre><span></span><code>integer,intent(in)          :: xsize
+integer,intent(in)          :: ysize
+integer,intent(in)          :: icolor
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">Given</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">horizontal</span><span class="w"> </span><span class="nv">size</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">vertical</span><span class="w"> </span><span class="nv">size</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">window</span><span class="w"> </span><span class="nv">to</span>
+<span class="nv">the</span><span class="w"> </span><span class="nv">rectangle</span><span class="w"> </span><span class="nv">defined</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">corner</span><span class="w"> </span><span class="nv">points</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span>.<span class="mi">0</span>,<span class="mi">0</span>.<span class="mi">0</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">xsize</span>,<span class="nv">ysize</span><span class="o">&gt;</span>
+<span class="nv">and</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">viewport</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">largest</span><span class="w"> </span><span class="nv">viewport</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">display</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">same</span><span class="w"> </span><span class="nv">aspect</span><span class="w"> </span><span class="nv">ratio</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">page</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">specified</span><span class="w"> </span><span class="nv">background</span>
+<span class="nv">color</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nv">background</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">supported</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">device</span>.
+</code></pre></div>
+
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>XSIZE    X size of requested window
+YSIZE    Y size of requested window
+ICOLOR   Color to set background.
+</code></pre></div>
+
+<h2 id="examples">EXAMPLES</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_page_rri</span>
+<span class="w">  </span><span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span>
+<span class="w">  </span><span class="nx">use</span><span class="w"> </span><span class="nx">M_drawplus</span><span class="p">,</span><span class="w"> </span><span class="nx">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nx">polyline2</span>
+<span class="w">  </span><span class="nx">implicit</span><span class="w"> </span><span class="nx">none</span>
+<span class="w">  </span><span class="nx">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">ipaws</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">prefsize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">vinit</span><span class="p">(</span><span class="sc">' '</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">page</span><span class="p">(</span><span class="m m-Double">8.5</span><span class="p">,</span><span class="m m-Double">11.0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">linewidth</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">circle</span><span class="p">(</span><span class="m m-Double">8.5</span><span class="o">/</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">11.0</span><span class="o">/</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">8.5</span><span class="o">/</span><span class="m m-Double">2.0</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">polyline2</span><span class="p">([</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="m m-Double">8.5</span><span class="p">,</span><span class="m m-Double">11.0</span><span class="p">]</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">polyline2</span><span class="p">([</span><span class="m m-Double">8.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="m m-Double">11.0</span><span class="p">]</span>
+<span class="w">  </span><span class="nx">ipaws</span><span class="p">=</span><span class="nx">getkey</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">call</span><span class="w"> </span><span class="nx">vexit</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">end</span>
+<span class="w">  </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_page_rri</span>
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>MIT
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xsize"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xsize</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ysize"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ysize</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-icolor"></span>
+              integer
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>icolor</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-invokeobj"></span> <h3>public  subroutine <a href='../proc/invokeobj.html'>invokeobj</a>(xt, yt, zt, xs, ys, zs, xr, yr, zr, iobject)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program</p><a href="../proc/invokeobj.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xt~2"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xt</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yt~2"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yt</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-zt"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>zt</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xs~4"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ys~4"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ys</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-zs"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>zs</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xr"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-yr"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>yr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-zr"></span>
+              real,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>zr</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iobject"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iobject</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-pop"></span> <h3>public  subroutine <a href='../proc/pop.html'>pop</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/pop.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-print"></span> <h3>public  subroutine <a href='../proc/print.html'>print</a>(g1, g2, g3, g4, g5, g6, g7, g8, g9)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/print.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g1"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g1</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g2"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g2</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g3"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g3</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g4"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g4</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g5"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g5</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g6"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g6</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g7"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g7</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g8"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g8</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-g9"></span>
+              class(*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>g9</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-push"></span> <h3>public  subroutine <a href='../proc/push.html'>push</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/push.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_drawtran
+ was developed by John S. Urban<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2026-11-23 00:37 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

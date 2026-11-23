@@ -1,0 +1,1642 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Small vector-based graphics module in Fortran">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>m_draw_text &ndash; M_drawtran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_drawtran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>m_draw_text
+      <small>Module</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 5.1% of total for modules and submodules.">705 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/m_draw_text.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_draw_text.f90.html'>m_draw_text.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">m_draw_text</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#inters-0"
+         aria-expanded="false" aria-controls="inters-0">
+         <h4 class="card-header bg-primary text-white">Interfaces</h4>
+      </a>
+      <div id="inters-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_draw_text.html#interface-draw_centertext">draw_centertext</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#interface-draw_drawchar">draw_drawchar</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#interface-draw_fixedwidth">draw_fixedwidth</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#funcs-0"
+         aria-expanded="false" aria-controls="funcs-0">
+         <h4 class="card-header bg-primary text-white">Functions</h4>
+      </a>
+      <div id="funcs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_getfontasc">draw_getfontasc</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_getfontdec">draw_getfontdec</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_getfontheight">draw_getfontheight</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_getfontwidth">draw_getfontwidth</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_hershfont">draw_hershfont</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_numchars">draw_numchars</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_strlength">draw_strlength</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_bottomjustify">draw_bottomjustify</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_boxfit">draw_boxfit</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_boxtext">draw_boxtext</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_drawstr">draw_drawstr</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_font">draw_font</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_getcharsize">draw_getcharsize</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_getfontsize">draw_getfontsize</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_leftjustify">draw_leftjustify</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_rightjustify">draw_rightjustify</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_textang">draw_textang</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_textjustify">draw_textjustify</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_textsize">draw_textsize</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_textslant">draw_textslant</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_textweight">draw_textweight</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_topjustify">draw_topjustify</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_xcentertext">draw_xcentertext</a>
+            <a class="list-group-item" href="../module/m_draw_text.html#proc-draw_ycentertext">draw_ycentertext</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+    </div>
+
+    <div class="col-md-9" id='text'>
+      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='m_draw_verror.html'>m_draw_verror</a></li>
+                  <li class="list-inline-item"><a href='m_draw_attr.html'>m_draw_attr</a></li>
+                  <li class="list-inline-item"><a href='m_draw_move.html'>m_draw_move</a></li>
+                  <li class="list-inline-item"><a href='m_draw_draw.html'>m_draw_draw</a></li>
+                  <li class="list-inline-item"><a href='m_draw_matrix.html'>m_draw_matrix</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item"><a href='m_draw_mapping.html'>m_draw_mapping</a></li>
+                  <li class="list-inline-item"><a href='m_draw_types.html'>m_draw_types</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+      
+      <br>
+
+
+
+
+        <section>
+          <h2>Interfaces</h2>
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-draw_centertext"></span>
+      <h3>public        interface <a href='../interface/draw_centertext.html'>draw_centertext</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine draw_centertext_integer(onoff)  
+
+    </h3>
+  <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>centertext(3f) - [M_draw:TEXT] Turns centertext mode on or off for SOFTWARE fonts.
+(LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>     subroutine centertext(onoff)
+     logical,intent(in) :: onoff
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code>Turns centertext text on or off. .TRUE. is on. This centers
+strings and chars. This routine only affects software text.
+</code></pre></div>
+
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>ONOFF  set centering mode on or off
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">program</span><span class="w"> </span><span class="nx">demo_centertext</span>
+<span class="nx">use</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">M_draw</span>
+<span class="nx">implicit</span><span class="w"> </span><span class="nx">none</span>
+<span class="nx">real</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">x1</span><span class="p">,</span><span class="w"> </span><span class="nx">y1</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="nx">ang</span><span class="p">,</span><span class="w"> </span><span class="nx">xx</span><span class="p">,</span><span class="w"> </span><span class="nx">yy</span>
+<span class="nx">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">j</span><span class="p">,</span><span class="w"> </span><span class="nx">ipaws</span>
+<span class="p">!!</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">drawing</span><span class="w"> </span><span class="nx">environment</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">prefsize</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">600</span><span class="p">)</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">vinit</span><span class="p">(</span><span class="sc">' '</span><span class="p">)</span><span class="w"> </span><span class="p">!</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="nx">using</span><span class="w"> </span><span class="nx">device</span><span class="w"> </span><span class="err">$</span><span class="nx">M_DRAW_DEVICE</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">ortho2</span><span class="p">(</span><span class="o">-</span><span class="m m-Double">300.0</span><span class="p">,</span><span class="m m-Double">300.0</span><span class="p">,</span><span class="o">-</span><span class="m m-Double">300.0</span><span class="p">,</span><span class="m m-Double">300.0</span><span class="p">)</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">textsize</span><span class="p">(</span><span class="m m-Double">8.0</span><span class="p">,</span><span class="m m-Double">8.0</span><span class="p">)</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">linewidth</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_BLACK</span><span class="p">)</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">clear</span><span class="p">()</span>
+
+<span class="nx">x1</span><span class="p">=</span><span class="o">-</span><span class="mi">150</span>
+<span class="nx">y1</span><span class="p">=</span><span class="o">-</span><span class="mi">150</span>
+<span class="nx">do</span><span class="w"> </span><span class="nx">j</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span>
+<span class="w">   </span><span class="nx">select</span><span class="w"> </span><span class="k">case</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="nx">call</span><span class="w">  </span><span class="nx">xcentertext</span><span class="p">();</span><span class="w">        </span><span class="nx">x1</span><span class="p">=</span><span class="o">-</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">y1</span><span class="p">=</span><span class="o">-</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">r</span><span class="p">=</span><span class="mi">100</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w">  </span><span class="nx">call</span><span class="w">  </span><span class="nx">ycentertext</span><span class="p">();</span><span class="w">        </span><span class="nx">x1</span><span class="p">=</span><span class="o">+</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">y1</span><span class="p">=</span><span class="o">-</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">r</span><span class="p">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w">  </span><span class="nx">call</span><span class="w">  </span><span class="nx">centertext</span><span class="p">(.</span><span class="kc">true</span><span class="p">.);</span><span class="w">   </span><span class="nx">x1</span><span class="p">=</span><span class="o">-</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">y1</span><span class="p">=</span><span class="o">+</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">r</span><span class="p">=</span><span class="mi">100</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w">  </span><span class="nx">call</span><span class="w">  </span><span class="nx">centertext</span><span class="p">(.</span><span class="kc">false</span><span class="p">.);</span><span class="w">  </span><span class="nx">x1</span><span class="p">=</span><span class="o">+</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">y1</span><span class="p">=</span><span class="o">+</span><span class="mi">150</span><span class="p">;</span><span class="w">  </span><span class="nx">r</span><span class="p">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">   </span><span class="nx">end</span><span class="w"> </span><span class="nx">select</span>
+<span class="w">   </span><span class="p">!!</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="nx">radial</span><span class="w"> </span><span class="nx">lines</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_RED</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">do</span><span class="w"> </span><span class="nx">i</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">80</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span><span class="nx">y1</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="nx">x1</span><span class="o">+</span><span class="m m-Double">150.0</span><span class="o">*</span><span class="nx">cosd</span><span class="p">(</span><span class="nx">i</span><span class="o">*</span><span class="m m-Double">12.0</span><span class="p">),</span><span class="w"> </span><span class="nx">y1</span><span class="o">+</span><span class="m m-Double">150.0</span><span class="o">*</span><span class="nx">sind</span><span class="p">(</span><span class="nx">i</span><span class="o">*</span><span class="m m-Double">12.0</span><span class="p">))</span>
+<span class="w">   </span><span class="nx">enddo</span>
+
+<span class="w">   </span><span class="p">!!</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="nx">rotated</span><span class="w"> </span><span class="nx">text</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_GREEN</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">do</span><span class="w"> </span><span class="nx">i</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span>
+<span class="w">      </span><span class="nx">ang</span><span class="p">=</span><span class="nx">i</span><span class="o">*</span><span class="m m-Double">12.0</span>
+<span class="w">      </span><span class="nx">xx</span><span class="p">=</span><span class="nx">x1</span><span class="o">+</span><span class="nx">r</span><span class="o">*</span><span class="nx">cosd</span><span class="p">(</span><span class="nx">ang</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">yy</span><span class="p">=</span><span class="nx">y1</span><span class="o">+</span><span class="nx">r</span><span class="o">*</span><span class="nx">sind</span><span class="p">(</span><span class="nx">ang</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="nx">xx</span><span class="p">,</span><span class="nx">yy</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">textang</span><span class="p">(</span><span class="nx">ang</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_WHITE</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">drawstr</span><span class="p">(</span><span class="err">'</span><span class="nx">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">angled</span><span class="w"> </span><span class="nx">text</span><span class="err">'</span><span class="p">)</span>
+<span class="w">      </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_RED</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">enddo</span>
+<span class="nx">enddo</span>
+
+<span class="nx">ipaws</span><span class="p">=</span><span class="nx">getkey</span><span class="p">()</span>
+
+<span class="nx">call</span><span class="w"> </span><span class="nx">vexit</span><span class="p">()</span>
+
+<span class="nx">end</span><span class="w"> </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_centertext</span>
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-onoff"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>onoff</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine draw_centertext_logical(onoff)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-onoff~2"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>onoff</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-draw_drawchar"></span>
+      <h3>public        interface <a href='../interface/draw_drawchar.html'>draw_drawchar</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine draw_drawchar_integer(c)  
+
+    </h3>
+  <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>drawchar(3f) - [M_draw:TEXT] Draw the character c and update current position.
+(LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>     subroutine drawchar(ch)
+     character(len=1),intent(in) :: ch
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code>Draw the character c at the current position. The current graphics
+position represents the bottom left hand corner of the character space.
+
+Uses current line color and thickness and text justification mode.
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="s s-Atom">program</span> <span class="s s-Atom">demo_drawchar</span>
+<span class="p">!</span>
+<span class="p">!</span>      <span class="s s-Atom">display</span> <span class="s s-Atom">all</span> <span class="s s-Atom">the</span> <span class="s s-Atom">hershey</span> <span class="s s-Atom">fonts</span> <span class="s s-Atom">and</span> <span class="s s-Atom">demonstrate</span> <span class="s s-Atom">textang</span>
+<span class="p">!</span>
+
+<span class="s s-Atom">use</span> <span class="nv">M_draw</span><span class="p">,</span> <span class="s s-Atom">only</span><span class="p">:</span> <span class="s s-Atom">vinit</span><span class="p">,</span> <span class="s s-Atom">vsetflush</span><span class="p">,</span> <span class="s s-Atom">color</span><span class="p">,</span> <span class="s s-Atom">clear</span><span class="p">,</span> <span class="s s-Atom">font</span><span class="p">,</span> <span class="s s-Atom">vexit</span><span class="p">,</span> <span class="s s-Atom">vflush</span>
+<span class="s s-Atom">use</span> <span class="nv">M_draw</span><span class="p">,</span> <span class="s s-Atom">only</span><span class="p">:</span> <span class="s s-Atom">ortho2</span><span class="p">,</span> <span class="s s-Atom">textang</span><span class="p">,</span> <span class="s s-Atom">boxtext</span><span class="p">,</span> <span class="s s-Atom">rect</span><span class="p">,</span> <span class="s s-Atom">textsize</span><span class="p">,</span> <span class="s s-Atom">getkey</span>
+<span class="s s-Atom">use</span> <span class="nv">M_draw</span><span class="p">,</span>    <span class="s s-Atom">only</span>  <span class="o">:</span> <span class="nv">D_BLACK</span><span class="p">,</span>   <span class="nv">D_WHITE</span>
+<span class="s s-Atom">use</span> <span class="nv">M_draw</span><span class="p">,</span>    <span class="s s-Atom">only</span>  <span class="o">:</span> <span class="nv">D_RED</span><span class="p">,</span>     <span class="nv">D_GREEN</span><span class="p">,</span>    <span class="nv">D_BLUE</span>
+<span class="s s-Atom">use</span> <span class="nv">M_draw</span><span class="p">,</span>    <span class="s s-Atom">only</span>  <span class="o">:</span> <span class="nv">D_YELLOW</span><span class="p">,</span>  <span class="nv">D_MAGENTA</span><span class="p">,</span>  <span class="nv">D_CYAN</span>
+<span class="s s-Atom">use</span> <span class="nv">M_draw</span>
+<span class="s s-Atom">implicit</span> <span class="s s-Atom">none</span>
+
+<span class="nf">character</span><span class="p">(</span><span class="s s-Atom">len</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>   <span class="o">::</span> <span class="s s-Atom">str1</span><span class="p">,</span> <span class="s s-Atom">str2</span><span class="p">,</span> <span class="s s-Atom">str3</span><span class="p">,</span> <span class="s s-Atom">str4</span><span class="p">,</span> <span class="nf">fonts</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+<span class="nf">character</span><span class="p">(</span><span class="s s-Atom">len</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="o">::</span> <span class="s s-Atom">buf</span>
+<span class="nf">character</span><span class="p">(</span><span class="s s-Atom">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>    <span class="o">::</span> <span class="s s-Atom">c</span>
+<span class="s s-Atom">integer</span>             <span class="o">::</span> <span class="s s-Atom">i</span><span class="p">,</span> <span class="s s-Atom">ios</span>
+<span class="s s-Atom">data</span> <span class="s s-Atom">fonts</span><span class="o">/</span> <span class="s s-Atom">'astrology'</span><span class="p">,</span> <span class="s s-Atom">'cursive'</span><span class="p">,</span>    <span class="s s-Atom">'futura.l'</span><span class="p">,</span>               <span class="s s-Atom">&amp;</span>
+<span class="s s-Atom">&amp;</span>      <span class="s s-Atom">'futura.m'</span><span class="p">,</span>  <span class="s s-Atom">'gothic.eng'</span><span class="p">,</span> <span class="s s-Atom">'gothic.ger'</span><span class="p">,</span>             <span class="s s-Atom">&amp;</span>
+<span class="s s-Atom">&amp;</span>      <span class="s s-Atom">'gothic.ita'</span><span class="p">,</span><span class="s s-Atom">'greek'</span><span class="p">,</span>      <span class="s s-Atom">'japanese'</span><span class="p">,</span>    <span class="s s-Atom">'markers'</span><span class="p">,</span> <span class="s s-Atom">&amp;</span>
+<span class="s s-Atom">&amp;</span>      <span class="s s-Atom">'math.low'</span><span class="p">,</span>  <span class="s s-Atom">'math.upp'</span><span class="p">,</span>   <span class="s s-Atom">'meteorology'</span><span class="p">,</span> <span class="s s-Atom">'music'</span><span class="p">,</span>   <span class="s s-Atom">&amp;</span>
+<span class="s s-Atom">&amp;</span>      <span class="s s-Atom">'cyrillic'</span><span class="p">,</span>  <span class="s s-Atom">'script'</span><span class="p">,</span>     <span class="s s-Atom">'symbolic'</span><span class="p">,</span>    <span class="s s-Atom">'times.g'</span><span class="p">,</span> <span class="s s-Atom">&amp;</span>
+<span class="s s-Atom">&amp;</span>      <span class="s s-Atom">'times.ib'</span><span class="p">,</span>  <span class="s s-Atom">'times.i'</span><span class="p">,</span>    <span class="s s-Atom">'times.r'</span><span class="p">,</span>     <span class="s s-Atom">'times.rb'</span> <span class="o">/</span>
+
+<span class="s s-Atom">data</span> <span class="s s-Atom">str1</span><span class="o">/</span> <span class="s s-Atom">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span> <span class="o">/</span>
+<span class="s s-Atom">data</span> <span class="s s-Atom">str2</span><span class="o">/</span> <span class="s s-Atom">'abcdefghijklmnopqrstuvwxyz'</span> <span class="o">/</span>
+<span class="s s-Atom">data</span> <span class="s s-Atom">str3</span><span class="o">/</span> <span class="s s-Atom">'1234567890+-=!@#$%^&amp;*(){}[]'</span> <span class="o">/</span>
+<span class="s s-Atom">data</span> <span class="s s-Atom">str4</span><span class="o">/</span> <span class="s s-Atom">'&lt;&gt;,./?~`\|_BONK,blark'</span> <span class="o">/</span>
+<span class="s s-Atom">integer</span> <span class="o">::</span> <span class="s s-Atom">idum</span>
+<span class="s s-Atom">print*</span><span class="p">,</span><span class="s s-Atom">'Enter output device:'</span>
+<span class="nf">read</span><span class="p">(</span><span class="s s-Atom">*</span><span class="p">,</span><span class="s s-Atom">'(a)'</span><span class="p">,</span><span class="s s-Atom">iostat</span><span class="o">=</span><span class="s s-Atom">ios</span><span class="p">)</span><span class="s s-Atom">buf</span>
+<span class="nf">if</span><span class="p">(</span><span class="s s-Atom">ios</span><span class="p">.</span><span class="s s-Atom">ne</span><span class="mf">.0</span><span class="p">)</span><span class="s s-Atom">buf=' '</span>
+<span class="s s-Atom">call</span> <span class="nf">prefsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="s s-Atom">call</span> <span class="nf">vinit</span><span class="p">(</span><span class="s s-Atom">buf</span><span class="p">)</span>
+<span class="s s-Atom">call</span> <span class="nf">vsetflush</span><span class="p">(.</span><span class="s s-Atom">false</span><span class="p">.)</span>
+<span class="s s-Atom">call</span> <span class="nf">linewidth</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="s s-Atom">call</span> <span class="nf">clear</span><span class="p">()</span>
+<span class="p">!</span> <span class="s s-Atom">define</span> <span class="s s-Atom">the</span> <span class="s s-Atom">world</span> <span class="s s-Atom">space</span>
+<span class="s s-Atom">call</span> <span class="nf">ortho2</span><span class="p">(</span><span class="o">-</span><span class="mf">14.0</span><span class="p">,</span> <span class="mf">14.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">14.0</span><span class="p">,</span> <span class="mf">14.0</span><span class="p">)</span>
+<span class="s s-Atom">do</span> <span class="s s-Atom">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">22</span>
+   <span class="p">!</span> <span class="s s-Atom">do</span> <span class="s s-Atom">the</span> <span class="s s-Atom">title</span>
+   <span class="s s-Atom">call</span> <span class="nf">textang</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>   <span class="p">!</span> <span class="s s-Atom">reset</span> <span class="s s-Atom">text</span> <span class="s s-Atom">angle</span> <span class="s s-Atom">so</span> <span class="s s-Atom">title</span> <span class="o">is</span> <span class="s s-Atom">straight</span>
+   <span class="s s-Atom">call</span> <span class="nf">color</span><span class="p">(</span><span class="nv">D_CYAN</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nf">font</span><span class="p">(</span><span class="s s-Atom">'futura.m'</span><span class="p">)</span>
+   <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">buf</span><span class="p">,</span> <span class="s s-Atom">'(''This is Hershey font '',a)'</span><span class="p">)</span> <span class="nf">fonts</span><span class="p">(</span><span class="s s-Atom">i</span><span class="p">)</span>
+   <span class="p">!</span><span class="s s-Atom">call</span> <span class="nf">printattribs</span><span class="p">(</span><span class="s s-Atom">'before'</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nf">boxtext</span><span class="p">(</span><span class="o">-</span><span class="mf">11.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s s-Atom">buf</span><span class="p">)</span>
+   <span class="p">!</span><span class="s s-Atom">call</span> <span class="nf">printattribs</span><span class="p">(</span><span class="s s-Atom">'after'</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nf">rect</span><span class="p">(</span><span class="o">-</span><span class="mf">11.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">)</span> <span class="p">!</span> <span class="s s-Atom">draw</span> <span class="s s-Atom">a</span> <span class="s s-Atom">box</span> <span class="s s-Atom">around</span> <span class="s s-Atom">the</span> <span class="s s-Atom">title</span>
+   <span class="s s-Atom">call</span> <span class="nf">font</span><span class="p">(</span><span class="nf">fonts</span><span class="p">(</span><span class="s s-Atom">i</span><span class="p">))</span>               <span class="p">!</span> <span class="s s-Atom">grab</span> <span class="s s-Atom">a</span> <span class="s s-Atom">font</span> <span class="s s-Atom">from</span> <span class="s s-Atom">the</span> <span class="s s-Atom">table</span>
+   <span class="s s-Atom">call</span> <span class="nf">color</span><span class="p">(</span><span class="nv">D_BLUE</span><span class="p">)</span>
+   <span class="p">!</span> <span class="s s-Atom">show</span> <span class="s s-Atom">the</span> <span class="s s-Atom">outer</span> <span class="s s-Atom">ring</span>
+   <span class="s s-Atom">call</span> <span class="nf">textsize</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nv">ShowCircularText</span><span class="p">(</span><span class="mf">11.0</span><span class="p">,</span> <span class="s s-Atom">str1</span><span class="p">)</span>
+   <span class="p">!</span> <span class="s s-Atom">show</span> <span class="s s-Atom">the</span> <span class="s s-Atom">second</span> <span class="s s-Atom">ring</span>
+   <span class="s s-Atom">call</span> <span class="nf">textsize</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nv">ShowCircularText</span><span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="s s-Atom">str2</span><span class="p">)</span>
+   <span class="p">!</span> <span class="s s-Atom">show</span> <span class="s s-Atom">the</span> <span class="s s-Atom">third</span> <span class="s s-Atom">ring</span>
+   <span class="s s-Atom">call</span> <span class="nf">textsize</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nv">ShowCircularText</span><span class="p">(</span><span class="mf">7.0</span><span class="p">,</span> <span class="s s-Atom">str3</span><span class="p">)</span>
+   <span class="p">!</span> <span class="s s-Atom">show</span> <span class="s s-Atom">the</span> <span class="s s-Atom">inside</span> <span class="s s-Atom">ring</span>
+   <span class="s s-Atom">call</span> <span class="nf">textsize</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nv">ShowCircularText</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="s s-Atom">str4</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nf">vflush</span><span class="p">()</span>
+
+   <span class="s s-Atom">idum</span><span class="o">=</span> <span class="nf">getkey</span><span class="p">()</span>
+   <span class="s s-Atom">select</span> <span class="nf">case</span><span class="p">(</span><span class="s s-Atom">idum</span><span class="p">)</span>
+    <span class="nf">case</span><span class="p">(</span><span class="o">:-</span><span class="mi">1</span><span class="p">,</span><span class="nf">ichar</span><span class="p">(</span><span class="s s-Atom">'q'</span><span class="p">),</span><span class="nf">ichar</span><span class="p">(</span><span class="s s-Atom">'Q'</span><span class="p">))</span>
+      <span class="s s-Atom">exit</span>
+   <span class="s s-Atom">end</span> <span class="s s-Atom">select</span>
+
+   <span class="s s-Atom">call</span> <span class="nf">color</span><span class="p">(</span><span class="nv">D_BLACK</span><span class="p">)</span>
+   <span class="s s-Atom">call</span> <span class="nf">clear</span><span class="p">()</span>
+<span class="s s-Atom">enddo</span>
+<span class="s s-Atom">call</span> <span class="nf">vexit</span><span class="p">()</span>
+<span class="s s-Atom">contains</span>
+
+<span class="s s-Atom">subroutine</span> <span class="nv">ShowCircularText</span><span class="p">(</span><span class="s s-Atom">r</span><span class="p">,</span> <span class="s s-Atom">str</span><span class="p">)</span>  <span class="p">!</span> <span class="s s-Atom">show</span> <span class="s s-Atom">a</span> <span class="s s-Atom">ring</span> <span class="s s-Atom">of</span> <span class="s s-Atom">text</span>
+   <span class="s s-Atom">use</span> <span class="nv">M_draw</span><span class="p">,</span> <span class="s s-Atom">only</span> <span class="o">:</span> <span class="s s-Atom">move2</span><span class="p">,</span> <span class="s s-Atom">textang</span><span class="p">,</span> <span class="s s-Atom">drawchar</span>
+
+   <span class="s s-Atom">real</span>              <span class="o">::</span> <span class="s s-Atom">r</span>
+   <span class="nf">character</span><span class="p">(</span><span class="s s-Atom">len=*</span><span class="p">)</span>  <span class="o">::</span> <span class="s s-Atom">str</span>
+   <span class="s s-Atom">real</span>              <span class="o">::</span> <span class="s s-Atom">i</span><span class="p">,</span> <span class="s s-Atom">inc</span><span class="p">,</span> <span class="s s-Atom">x</span><span class="p">,</span> <span class="s s-Atom">y</span><span class="p">,</span> <span class="s s-Atom">a</span>
+   <span class="s s-Atom">integer</span>           <span class="o">::</span> <span class="s s-Atom">j</span><span class="p">,</span> <span class="s s-Atom">i10</span>
+   <span class="nf">character</span><span class="p">(</span><span class="s s-Atom">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="o">::</span> <span class="s s-Atom">c</span>
+   <span class="s s-Atom">real</span><span class="p">,</span><span class="s s-Atom">parameter</span>    <span class="o">::</span> <span class="s s-Atom">pi</span> <span class="o">=</span> <span class="mf">3.1415926535</span>
+
+   <span class="s s-Atom">j</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="s s-Atom">inc</span> <span class="o">=</span> <span class="mf">360.0</span> <span class="o">/</span> <span class="nf">len_trim</span><span class="p">(</span><span class="s s-Atom">str</span><span class="p">)</span>
+
+   <span class="s s-Atom">i</span><span class="o">=</span><span class="mf">0.0</span>
+   <span class="s s-Atom">do</span> <span class="s s-Atom">i10</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="nf">len_trim</span><span class="p">(</span><span class="s s-Atom">str</span><span class="p">)</span>
+      <span class="p">!</span>
+      <span class="p">!</span> <span class="s s-Atom">calculate</span> <span class="s s-Atom">the</span> <span class="s s-Atom">next</span> <span class="s s-Atom">drawing</span> <span class="s s-Atom">position</span>
+      <span class="s s-Atom">c</span> <span class="o">=</span> <span class="nf">str</span><span class="p">(</span><span class="s s-Atom">j</span><span class="p">:</span><span class="s s-Atom">j</span><span class="p">)</span>
+      <span class="s s-Atom">x</span> <span class="o">=</span> <span class="s s-Atom">r</span> <span class="o">*</span> <span class="nf">cos</span><span class="p">(</span><span class="s s-Atom">i</span> <span class="o">*</span> <span class="s s-Atom">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span>
+      <span class="s s-Atom">y</span> <span class="o">=</span> <span class="s s-Atom">r</span> <span class="o">*</span> <span class="nf">sin</span><span class="p">(</span><span class="s s-Atom">i</span> <span class="o">*</span> <span class="s s-Atom">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span>
+      <span class="s s-Atom">call</span> <span class="nf">move2</span><span class="p">(</span><span class="s s-Atom">x</span><span class="p">,</span> <span class="s s-Atom">y</span><span class="p">)</span>
+      <span class="p">!</span>
+      <span class="p">!</span> <span class="s s-Atom">calculate</span> <span class="s s-Atom">angle</span> <span class="s s-Atom">for</span> <span class="s s-Atom">next</span> <span class="s s-Atom">character</span>
+      <span class="s s-Atom">a</span> <span class="o">=</span> <span class="mf">90.0</span> <span class="o">+</span> <span class="s s-Atom">i</span>
+      <span class="p">!</span>
+      <span class="p">!</span> <span class="s s-Atom">set</span> <span class="s s-Atom">the</span> <span class="s s-Atom">orientation</span> <span class="s s-Atom">of</span> <span class="s s-Atom">the</span> <span class="s s-Atom">next</span> <span class="s s-Atom">character</span>
+      <span class="s s-Atom">call</span> <span class="nf">textang</span><span class="p">(</span><span class="s s-Atom">a</span><span class="p">)</span>
+      <span class="p">!</span>
+      <span class="p">!</span> <span class="s s-Atom">draw</span> <span class="s s-Atom">the</span> <span class="s s-Atom">character</span>
+      <span class="s s-Atom">call</span> <span class="nf">drawchar</span><span class="p">(</span><span class="s s-Atom">c</span><span class="p">)</span>
+      <span class="s s-Atom">j</span> <span class="o">=</span> <span class="s s-Atom">j</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="s s-Atom">i</span><span class="o">=</span><span class="s s-Atom">i</span><span class="o">+</span><span class="s s-Atom">inc</span>
+   <span class="s s-Atom">enddo</span>
+
+<span class="s s-Atom">end</span> <span class="s s-Atom">subroutine</span> <span class="nv">ShowCircularText</span>
+
+<span class="s s-Atom">end</span> <span class="s s-Atom">program</span> <span class="s s-Atom">demo_drawchar</span>
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-c~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>c</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine draw_drawchar_character(letter)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-letter"></span>
+              character(len=1),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>letter</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-draw_fixedwidth"></span>
+      <h3>public        interface <a href='../interface/draw_fixedwidth.html'>draw_fixedwidth</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  subroutine draw_fixedwidth_integer(onoff)  
+
+    </h3>
+  <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>fixedwidth(3f) - [M_draw:TEXT] Turns fixedwidth mode on or off for SOFTWARE fonts.
+(LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>     subroutine fixedwidth(onoff)
+     logical onoff
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">Turns</span><span class="w"> </span><span class="nv">fixedwidth</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">off</span>.<span class="w"> </span>.<span class="nv">TRUE</span>.<span class="w"> </span><span class="nv">causes</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="nv">to</span>
+<span class="nv">be</span><span class="w"> </span><span class="nv">printed</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">fixed</span><span class="w"> </span><span class="nv">width</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">character</span>.<span class="w"> </span><span class="nv">Otherwise</span>,<span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">text</span>
+<span class="nv">is</span><span class="w"> </span><span class="nv">spaced</span><span class="w"> </span><span class="nv">proportionally</span>,<span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">character</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">unique</span><span class="w"> </span><span class="nv">width</span><span class="w"> </span><span class="nv">less</span>
+<span class="nv">than</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">equal</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">fixed</span><span class="w"> </span><span class="nv">font</span><span class="w"> </span><span class="nv">width</span>.<span class="w"> </span><span class="nv">This</span><span class="w"> </span><span class="nv">routine</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="nv">affects</span>
+<span class="nv">software</span><span class="w"> </span><span class="nv">text</span>.
+
+<span class="nv">The</span><span class="w"> </span><span class="nv">default</span><span class="w"> </span><span class="nv">at</span><span class="w"> </span><span class="nv">program</span><span class="w"> </span><span class="nv">initialization</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">fixedwidth</span><span class="ss">(</span>.<span class="nv">false</span>.<span class="ss">)</span>
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">program</span><span class="w"> </span><span class="nx">demo_fixedwidth</span>
+<span class="w">   </span><span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span>
+<span class="w">   </span><span class="nx">implicit</span><span class="w"> </span><span class="nx">none</span>
+<span class="w">   </span><span class="nx">real</span><span class="p">,</span><span class="nx">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">x1</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="w">  </span><span class="nx">x2</span><span class="p">=</span><span class="m m-Double">40.0</span><span class="p">,</span><span class="w">  </span><span class="nx">y1</span><span class="p">=</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="w">  </span><span class="nx">y2</span><span class="p">=</span><span class="m m-Double">4.0</span>
+<span class="w">   </span><span class="nx">real</span><span class="p">,</span><span class="nx">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">scl</span><span class="p">=</span><span class="mi">3</span><span class="o">*</span><span class="m m-Double">0.7</span>
+<span class="w">   </span><span class="nx">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">idum</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">display</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">prefsize</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vinit</span><span class="p">(</span><span class="sc">' '</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">page</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span><span class="nx">x2</span><span class="p">,</span><span class="nx">y1</span><span class="p">,</span><span class="nx">y2</span><span class="p">)</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">font</span><span class="w"> </span><span class="nx">appearance</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">linewidth</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">font</span><span class="p">(</span><span class="s">"times.rb"</span><span class="p">)</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">using</span><span class="w"> </span><span class="nx">proportional</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">fixed</span><span class="w"> </span><span class="nx">spacing</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="nx">x1</span><span class="o">+</span><span class="m m-Double">0.3</span><span class="p">,</span><span class="nx">y1</span><span class="o">+</span><span class="m m-Double">0.4</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">textsize</span><span class="p">(</span><span class="m m-Double">0.8</span><span class="o">*</span><span class="nx">scl</span><span class="p">,</span><span class="m m-Double">1.2</span><span class="o">*</span><span class="nx">scl</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">fixedwidth</span><span class="p">(.</span><span class="kc">false</span><span class="p">.)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">drawstr</span><span class="p">(</span><span class="s">"fixedwidth(.false.)"</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">textsize</span><span class="p">(</span><span class="m m-Double">0.6</span><span class="o">*</span><span class="nx">scl</span><span class="p">,</span><span class="m m-Double">1.2</span><span class="o">*</span><span class="nx">scl</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">fixedwidth</span><span class="p">(.</span><span class="kc">true</span><span class="p">.)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">drawstr</span><span class="p">(</span><span class="s">" fixedwidth(.true.)"</span><span class="p">)</span>
+<span class="p">!</span><span class="w"> </span><span class="nx">wrap</span><span class="w"> </span><span class="nx">up</span>
+<span class="w">   </span><span class="nx">idum</span><span class="p">=</span><span class="nx">getkey</span><span class="p">()</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vexit</span><span class="p">()</span>
+<span class="nx">end</span><span class="w"> </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_fixedwidth</span>
+</code></pre></div>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-onoff~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>onoff</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private  subroutine draw_fixedwidth_logical(onoff)  
+
+    </h3>
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-onoff~4"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>onoff</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+        </section>
+        <br>
+
+
+
+        <section>
+          <h2>Functions</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_getfontasc"></span> <h3>public  function <a href='../proc/draw_getfontasc.html'>draw_getfontasc</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+    <h4>
+    Return Value
+    <small>real(kind=real32)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_getfontdec"></span> <h3>public  function <a href='../proc/draw_getfontdec.html'>draw_getfontdec</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/draw_getfontdec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+    <h4>
+    Return Value
+    <small>real(kind=real32)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_getfontheight"></span> <h3>public  function <a href='../proc/draw_getfontheight.html'>draw_getfontheight</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+    <h4>
+    Return Value
+    <small>real(kind=real32)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_getfontwidth"></span> <h3>public  function <a href='../proc/draw_getfontwidth.html'>draw_getfontwidth</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+    <h4>
+    Return Value
+    <small>real(kind=real32)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_hershfont"></span> <h3>public  function <a href='../proc/draw_hershfont.html'>draw_hershfont</a>(fontname)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fontname"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fontname</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>integer</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_numchars"></span> <h3>public  function <a href='../proc/draw_numchars.html'>draw_numchars</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/draw_numchars.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+    <h4>
+    Return Value
+    <small>integer</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_strlength"></span> <h3>public  function <a href='../proc/draw_strlength.html'>draw_strlength</a>(s)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample Program:</p><a href="../proc/draw_strlength.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-s~8"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>s</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>real(kind=real32)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+        <section>
+          <h2>Subroutines</h2>
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_bottomjustify"></span> <h3>public  subroutine <a href='../proc/draw_bottomjustify.html'>draw_bottomjustify</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_bottomjustify.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_boxfit"></span> <h3>public  subroutine <a href='../proc/draw_boxfit.html'>draw_boxfit</a>(l, h, num_chars)  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/draw_boxfit.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l~2"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-h~2"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>h</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-num_chars"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>num_chars</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_boxtext"></span> <h3>public  subroutine <a href='../proc/draw_boxtext.html'>draw_boxtext</a>(x, y, l, h, s)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Simple program:</p><a href="../proc/draw_boxtext.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~18"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~15"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-h"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>h</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-s~9"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>s</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_drawstr"></span> <h3>public  subroutine <a href='../proc/draw_drawstr.html'>draw_drawstr</a>(string)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_drawstr.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-string~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>string</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_font"></span> <h3>public recursive subroutine <a href='../proc/draw_font.html'>draw_font</a>(name)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample Program:</p><a href="../proc/draw_font.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-name"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>name</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_getcharsize"></span> <h3>public  subroutine <a href='../proc/draw_getcharsize.html'>draw_getcharsize</a>(c, width, height)  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/draw_getcharsize.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-c~9"></span>
+              character(len=1),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>c</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-width"></span>
+              real(kind=real32),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>width</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-height"></span>
+              real(kind=real32),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>height</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_getfontsize"></span> <h3>public  subroutine <a href='../proc/draw_getfontsize.html'>draw_getfontsize</a>(cw, ch)  
+</h3></div>
+    <div class="card-body">
+          
+  <a href="../proc/draw_getfontsize.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cw~4"></span>
+              real(kind=real32),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cw</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ch~11"></span>
+              real(kind=real32),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ch</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_leftjustify"></span> <h3>public  subroutine <a href='../proc/draw_leftjustify.html'>draw_leftjustify</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_leftjustify.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_rightjustify"></span> <h3>public  subroutine <a href='../proc/draw_rightjustify.html'>draw_rightjustify</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_rightjustify.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_textang"></span> <h3>public  subroutine <a href='../proc/draw_textang.html'>draw_textang</a>(ang)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_textang.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ang"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ang</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_textjustify"></span> <h3>public  subroutine <a href='../proc/draw_textjustify.html'>draw_textjustify</a>(val)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_textjustify.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-val~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>val</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_textsize"></span> <h3>public  subroutine <a href='../proc/draw_textsize.html'>draw_textsize</a>(width, height)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Set the maximum size of a character in the current font. Width and height
+ are values in world units. This applies to software text, but may not apply
+ to hardware fonts depending upon the output device. This must
+ be done after the font being scaled is loaded. To keep text of different
+ sizes aligned along the same baseline not that you typically need to
+ subtract the descender height from the Y position</p><a href="../proc/draw_textsize.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-width~2"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>width</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-height~2"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>height</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_textslant"></span> <h3>public  subroutine <a href='../proc/draw_textslant.html'>draw_textslant</a>(val)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_textslant.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-val~4"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>val</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_textweight"></span> <h3>public  subroutine <a href='../proc/draw_textweight.html'>draw_textweight</a>(val)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_textweight.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-val~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>val</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_topjustify"></span> <h3>public  subroutine <a href='../proc/draw_topjustify.html'>draw_topjustify</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_topjustify.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_xcentertext"></span> <h3>public  subroutine <a href='../proc/draw_xcentertext.html'>draw_xcentertext</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_xcentertext.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-draw_ycentertext"></span> <h3>public  subroutine <a href='../proc/draw_ycentertext.html'>draw_ycentertext</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Sample program:</p><a href="../proc/draw_ycentertext.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+        </section>
+        <br>
+
+
+
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_drawtran
+ was developed by John S. Urban<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2026-11-23 00:37 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

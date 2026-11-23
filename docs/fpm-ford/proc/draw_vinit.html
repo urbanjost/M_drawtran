@@ -1,0 +1,582 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Small vector-based graphics module in Fortran">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>draw_vinit &ndash; M_drawtran</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_drawtran </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>draw_vinit
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 1.7% of total for procedures.">65 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/m_draw_drivers.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/m_draw_drivers.f90.html'>m_draw_drivers.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/m_draw_drivers.html'>m_draw_drivers</a></li>
+            <li class="breadcrumb-item active" aria-current="page">draw_vinit</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/draw_vinit.html#src">draw_vinit</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine draw_vinit(device)  
+</h2>
+    
+
+    <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>vinit(3f) - [M_draw:DEVICE] Initialise device
+(LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>      subroutine vinit(device)
+      character(len=*),intent(in) :: device
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code>Initialise the device.
+</code></pre></div>
+
+<p>Note 1 : Currently available devices are:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="nv">INTERACTIVE</span> <span class="nv">DEVICES</span>
+
+    <span class="nv">PC</span>   <span class="o">-</span> <span class="s s-Atom">native</span> <span class="nv">MSW</span> <span class="nv">PC</span> <span class="s s-Atom">driver</span><span class="p">;</span> <span class="s s-Atom">only</span> <span class="s s-Atom">tested</span> <span class="s s-Atom">from</span> <span class="nv">CygWin</span>
+    <span class="nv">X11</span>  <span class="o">-</span> <span class="nv">X11</span> <span class="nf">windows</span> <span class="p">(</span><span class="nv">Black</span> <span class="s s-Atom">background</span><span class="p">)</span>
+    <span class="s s-Atom">x11</span>  <span class="o">-</span> <span class="nv">X11</span> <span class="nf">windows</span> <span class="p">(</span><span class="nv">White</span> <span class="s s-Atom">background</span><span class="p">)</span>
+    <span class="s s-Atom">tek</span>  <span class="o">-</span> <span class="s s-Atom">tektronix</span> <span class="mi">4010</span> <span class="s s-Atom">and</span> <span class="s s-Atom">compatibles</span>
+    <span class="s s-Atom">xtek</span> <span class="o">-</span> <span class="nv">X11</span> <span class="s s-Atom">xterm</span> <span class="nv">Tektronix</span> <span class="mi">4010</span> <span class="s s-Atom">emulator</span>
+
+    <span class="nv">PRINTERS</span> <span class="nv">AND</span> <span class="nv">PLOTTERS</span>
+
+       <span class="nv">PostScript</span><span class="o">:</span>
+          <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">psm</span> <span class="s s-Atom">or</span> <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">postscript</span> <span class="o">-</span> <span class="s s-Atom">monochrome</span> <span class="nv">PostScript</span>
+          <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">psg</span> <span class="o">-</span> <span class="s s-Atom">grayscale</span> <span class="nv">PostScript</span>
+          <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">psc</span> <span class="o">-</span> <span class="s s-Atom">color</span> <span class="nv">PostScript</span>
+       <span class="nv">HPGL</span><span class="o">:</span>
+          <span class="s s-Atom">hpgl</span> <span class="o">-</span> <span class="nv">HP</span> <span class="nv">Graphics</span> <span class="s s-Atom">language</span> <span class="s s-Atom">and</span> <span class="s s-Atom">compatibles</span>
+          <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">hpgl2</span> <span class="o">-</span> <span class="nv">HPGL</span> <span class="s s-Atom">level</span> <span class="mi">2</span> <span class="p">(</span><span class="s s-Atom">obeys</span> <span class="s s-Atom">prefsize</span> <span class="s s-Atom">calls</span><span class="p">)</span>
+       <span class="nv">PCL</span><span class="o">:</span>
+          <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">pclland</span>  <span class="o">-</span> <span class="s s-Atom">monochrome</span> <span class="nv">PCL5</span> <span class="p">(</span><span class="s s-Atom">obeys</span> <span class="s s-Atom">prefsize</span> <span class="s s-Atom">calls</span><span class="p">)</span>
+          <span class="p">[</span><span class="s s-Atom">p</span><span class="p">]</span><span class="s s-Atom">pclport</span>  <span class="o">-</span> <span class="s s-Atom">monochrome</span> <span class="nv">PCL5</span> <span class="p">(</span><span class="s s-Atom">obeys</span> <span class="s s-Atom">prefsize</span> <span class="s s-Atom">calls</span><span class="p">)</span>
+          <span class="nf">pcl5land</span> <span class="p">(</span><span class="s s-Atom">color</span> <span class="nv">PCL5</span> <span class="s s-Atom">landscape</span><span class="p">)</span>
+          <span class="nf">pcl5port</span> <span class="p">(</span><span class="s s-Atom">color</span> <span class="nv">PCL5</span> <span class="s s-Atom">portrait</span><span class="p">)</span>
+
+    <span class="nv">PIXMAPS</span> <span class="p">(</span><span class="nv">COLOR</span><span class="p">)</span> <span class="nv">AND</span> <span class="nv">BITMAPS</span> <span class="p">(</span><span class="nv">MONOCHROME</span><span class="p">)</span>
+
+    <span class="s s-Atom">char</span>     <span class="nv">An</span> <span class="nv">ASCII</span> <span class="s s-Atom">file</span> <span class="s s-Atom">that</span> <span class="s s-Atom">can</span> <span class="s s-Atom">be</span> <span class="s s-Atom">displayed</span> <span class="s s-Atom">to</span> <span class="s s-Atom">most</span>
+             <span class="nf">xterm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s s-Atom">terminal</span> <span class="s s-Atom">emulators</span> <span class="s s-Atom">that</span> <span class="s s-Atom">support</span>
+             <span class="s s-Atom">color</span>
+    <span class="s s-Atom">p1</span><span class="o">/</span><span class="s s-Atom">pbm</span>   <span class="nv">Poskanzer</span> <span class="p">(</span><span class="s s-Atom">pbmplus</span><span class="o">/</span><span class="s s-Atom">netplus</span><span class="p">)</span> <span class="s s-Atom">portable</span>
+             <span class="nv">ASCII</span> <span class="s s-Atom">bitmap</span> <span class="s s-Atom">file</span>
+    <span class="s s-Atom">p3</span><span class="o">/</span><span class="s s-Atom">ppm</span>   <span class="nv">Poskanzer</span> <span class="s s-Atom">portable</span> <span class="nv">ASCII</span> <span class="s s-Atom">pixmap</span> <span class="s s-Atom">file</span>
+    <span class="s s-Atom">p4</span>       <span class="nv">Poskanzer</span> <span class="s s-Atom">portable</span> <span class="s s-Atom">binary</span> <span class="s s-Atom">bitmap</span> <span class="s s-Atom">file</span>
+    <span class="s s-Atom">p6</span>       <span class="nv">Poskanzer</span> <span class="s s-Atom">portable</span> <span class="s s-Atom">binary</span> <span class="s s-Atom">pixmap</span> <span class="s s-Atom">file</span>
+    <span class="s s-Atom">xbm</span>      <span class="nv">X11</span> <span class="s s-Atom">bitmap</span> <span class="s s-Atom">file</span>
+    <span class="s s-Atom">bm</span>       <span class="s s-Atom">bitmap</span> <span class="s s-Atom">format</span> <span class="s s-Atom">for</span> <span class="nf">atobm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="nv">PRODUCT</span> <span class="nv">INPUT</span> <span class="nv">FILES</span>
+
+    <span class="s s-Atom">mif</span>        <span class="nv">FrameMaker</span> <span class="nv">Interchange</span> <span class="nv">Format</span> <span class="mf">3.0</span> <span class="p">(</span><span class="nv">MIF</span><span class="p">)</span> <span class="nf">files</span>
+               <span class="p">(</span><span class="mi">16</span> <span class="s s-Atom">colors</span><span class="p">)</span>
+    <span class="s s-Atom">mif4</span>       <span class="nv">FrameMaker</span> <span class="nv">Interchange</span> <span class="nv">Format</span> <span class="mf">4.0</span> <span class="p">(</span><span class="nv">MIF</span><span class="p">)</span> <span class="nf">files</span>
+               <span class="p">(</span><span class="nb">user</span><span class="o">-</span><span class="s s-Atom">definable</span> <span class="s s-Atom">colors</span><span class="p">,</span> <span class="s s-Atom">but</span> <span class="s s-Atom">breaks</span> <span class="s s-Atom">a</span> <span class="nv">MIF</span> <span class="s s-Atom">rule</span><span class="p">)</span>
+    <span class="s s-Atom">xfig</span>       <span class="nv">X11</span> <span class="nf">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s s-Atom">figure</span> <span class="s s-Atom">utility</span>
+
+    <span class="nv">METAFILES</span> <span class="nv">WITH</span> <span class="nv">POST_PROCESSORS</span><span class="o">/</span><span class="nv">CONVERTERS</span>
+
+    <span class="s s-Atom">cgmt</span>      <span class="s s-Atom">a</span> <span class="s s-Atom">clear</span><span class="o">-</span><span class="s s-Atom">text</span> <span class="nv">CGM</span> <span class="p">(</span><span class="nv">Computer</span> <span class="nv">Graphics</span> <span class="nv">Metafile</span><span class="p">)</span>
+    <span class="s s-Atom">gnu</span>       <span class="nv">GNU</span> <span class="nf">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s s-Atom">metafile</span>
+    <span class="s s-Atom">pdf</span>       <span class="nv">Adobe</span> <span class="nv">Public</span> <span class="nv">Document</span> <span class="nv">Format</span>
+    <span class="s s-Atom">unixplot</span>  <span class="nv">Unix</span> <span class="nf">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s s-Atom">metafile</span>
+
+    <span class="nv">BROWSER</span> <span class="nv">FILES</span>
+
+    <span class="s s-Atom">canvas</span>    <span class="nv">HTML5</span> <span class="nv">CANVAS</span> <span class="s s-Atom">graphics</span> <span class="s s-Atom">element</span> <span class="s s-Atom">file</span>
+    <span class="s s-Atom">svg</span>       <span class="nv">Scalable</span> <span class="nv">Vector</span> <span class="nv">Graphics</span>
+    <span class="s s-Atom">usemap</span>    <span class="nv">HTML</span> <span class="s s-Atom">image</span> <span class="s s-Atom">map</span>
+    <span class="s s-Atom">vml</span>       <span class="nv">Microsoft</span> <span class="nv">Vector</span> <span class="nv">Markup</span> <span class="nv">Language</span>
+
+    <span class="nv">FILES</span>
+    <span class="s s-Atom">vog</span>       <span class="nv">M_draw</span> <span class="s s-Atom">low</span> <span class="s s-Atom">level</span> <span class="s s-Atom">call</span> <span class="nf">record</span> <span class="p">(</span><span class="s s-Atom">debug</span><span class="p">)</span>
+
+    <span class="nv">OTHER</span>
+    <span class="s s-Atom">fti</span>       <span class="nv">SGI</span> <span class="s s-Atom">vector</span><span class="o">-</span><span class="s s-Atom">based</span> <span class="s s-Atom">icons</span>
+    <span class="s s-Atom">null</span>      <span class="s s-Atom">no</span> <span class="nf">output</span>
+
+  <span class="o">:-</span> <span class="nv">Drivers</span> <span class="nv">I</span><span class="s s-Atom">'ve dropped but code is there for</span>
+<span class="s s-Atom">  ---------------------------------------------</span>
+
+<span class="s s-Atom">    grwin - (minGW GRwin PC interface)</span>
+<span class="s s-Atom">    decX11 - the decstation window manager</span>
+<span class="s s-Atom">    dxy - roland DXY plotter language</span>
+<span class="s s-Atom">    sun - Sun workstations running sunview</span>
+<span class="s s-Atom">    next - NeXTStep and other NeXT platforms</span>
+<span class="s s-Atom">    apollo - Apollo workstations</span>
+
+<span class="s s-Atom">  :- Drivers I've</span> <span class="s s-Atom">dropped</span> <span class="s s-Atom">but</span> <span class="s s-Atom">are</span> <span class="s s-Atom">in</span> <span class="s s-Atom">the</span> <span class="s s-Atom">original</span> <span class="s s-Atom">distribution</span>
+  <span class="s s-Atom">------------------------------------------------------------</span>
+
+    <span class="s s-Atom">hercules</span> <span class="o">-</span> <span class="nv">IBM</span> <span class="nv">PC</span> <span class="s s-Atom">hercules</span> <span class="s s-Atom">graphics</span> <span class="s s-Atom">card</span>
+    <span class="s s-Atom">cga</span> <span class="o">-</span> <span class="nv">IBM</span> <span class="nv">PC</span> <span class="s s-Atom">cga</span> <span class="s s-Atom">graphics</span> <span class="s s-Atom">card</span>
+    <span class="s s-Atom">ega</span> <span class="o">-</span> <span class="nv">IBM</span> <span class="nv">PC</span> <span class="s s-Atom">ega</span> <span class="s s-Atom">graphics</span> <span class="s s-Atom">card</span>
+    <span class="s s-Atom">vga</span> <span class="o">-</span> <span class="nv">IBM</span> <span class="nv">PC</span> <span class="s s-Atom">vga</span> <span class="s s-Atom">graphics</span> <span class="s s-Atom">card</span>
+    <span class="s s-Atom">sigma</span> <span class="o">-</span> <span class="nv">IBM</span> <span class="nv">PC</span> <span class="s s-Atom">sigma</span> <span class="s s-Atom">graphics</span> <span class="s s-Atom">card</span><span class="p">.</span>
+    <span class="s s-Atom">mswin</span> <span class="o">-</span> <span class="nv">IBM</span> <span class="nv">PC</span> <span class="nv">Microsoft</span> <span class="nv">Windows</span><span class="p">.</span>
+
+ <span class="nv">Note</span> <span class="mi">2</span> <span class="o">:</span> <span class="nv">If</span> <span class="s s-Atom">device</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="nv">NULL</span> <span class="s s-Atom">or</span> <span class="s s-Atom">a</span> <span class="s s-Atom">null</span> <span class="s s-Atom">string</span> <span class="s s-Atom">the</span> <span class="nb">val</span><span class="s s-Atom">ue</span>
+      <span class="s s-Atom">of</span> <span class="s s-Atom">the</span> <span class="s s-Atom">environment</span> <span class="s s-Atom">variable</span> <span class="s2">"M_DRAW_DEVICE"</span> <span class="o">is</span> <span class="s s-Atom">taken</span> <span class="s s-Atom">as</span> <span class="s s-Atom">the</span>
+      <span class="s s-Atom">device</span> <span class="s s-Atom">type</span> <span class="s s-Atom">to</span> <span class="s s-Atom">be</span> <span class="s s-Atom">opened</span><span class="p">.</span> <span class="nv">The</span> <span class="s s-Atom">format</span> <span class="s s-Atom">of</span> <span class="s s-Atom">the</span> <span class="s s-Atom">variable</span> <span class="o">is</span>
+
+         <span class="nv">M_DRAW_DEVICE</span> <span class="p">[</span> <span class="s s-Atom">xsize</span> <span class="p">[</span> <span class="s s-Atom">ysize</span> <span class="p">[</span> <span class="s s-Atom">xoffset</span> <span class="p">[</span> <span class="s s-Atom">yoffset</span> <span class="p">]</span> <span class="p">]</span> <span class="p">]</span>
+
+      <span class="nv">That</span> <span class="o">is</span><span class="p">,</span> <span class="s s-Atom">if</span> <span class="s s-Atom">present</span> <span class="s s-Atom">xsize</span> <span class="s s-Atom">and</span> <span class="s s-Atom">ysize</span> <span class="s s-Atom">will</span> <span class="s s-Atom">be</span> <span class="s s-Atom">used</span>
+      <span class="s s-Atom">in</span> <span class="s s-Atom">a</span> <span class="s s-Atom">call</span> <span class="s s-Atom">to</span> <span class="nf">prefsize</span><span class="p">(</span><span class="mi">3</span><span class="s s-Atom">c</span><span class="p">),</span> <span class="s s-Atom">and</span> <span class="s s-Atom">xoffset</span> <span class="s s-Atom">and</span> <span class="s s-Atom">yoffset</span> <span class="s s-Atom">will</span>
+      <span class="s s-Atom">be</span> <span class="s s-Atom">used</span> <span class="s s-Atom">in</span> <span class="s s-Atom">a</span> <span class="s s-Atom">call</span> <span class="s s-Atom">to</span> <span class="nf">preposition</span><span class="p">(</span><span class="mi">3</span><span class="s s-Atom">c</span><span class="p">).</span>
+
+ <span class="nv">Note</span> <span class="mi">3</span> <span class="o">:</span> <span class="s s-Atom">after</span> <span class="nf">vinit</span><span class="p">()</span> <span class="s s-Atom">it</span> <span class="o">is</span> <span class="s s-Atom">wise</span> <span class="s s-Atom">to</span> <span class="s s-Atom">explicitly</span> <span class="s s-Atom">clear</span> <span class="s s-Atom">the</span> <span class="s s-Atom">screen</span><span class="p">.</span>
+ <span class="s s-Atom">e</span><span class="p">.</span><span class="s s-Atom">g</span><span class="p">.</span><span class="o">:</span>
+
+      <span class="s s-Atom">call</span> <span class="nf">color</span><span class="p">(</span><span class="nv">D_BLACK</span><span class="p">)</span>
+      <span class="s s-Atom">call</span> <span class="nf">clear</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="notes">NOTES</h2>
+<p>gnu</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">The</span><span class="w"> </span><span class="nx">GNU</span><span class="w"> </span><span class="nx">plotutils</span><span class="w"> </span><span class="kn">package</span><span class="w"> </span><span class="nx">includes</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">program</span><span class="w"> </span><span class="nx">called</span><span class="w"> </span><span class="nx">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">that</span>
+<span class="nx">can</span><span class="w"> </span><span class="nx">read</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">gnu</span><span class="w"> </span><span class="nx">metafile</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">render</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">X11</span><span class="w"> </span><span class="nx">display</span><span class="p">,</span><span class="w"> </span><span class="nx">PNG</span>
+<span class="p">(</span><span class="nx">Portable</span><span class="w"> </span><span class="nx">Network</span><span class="w"> </span><span class="nx">Graphics</span><span class="p">)</span><span class="w"> </span><span class="nx">format</span><span class="p">,</span><span class="w"> </span><span class="nx">portable</span><span class="w"> </span><span class="nx">anymap</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">(</span><span class="nx">PBM</span><span class="o">/</span><span class="nx">PGM</span><span class="o">/</span><span class="nx">PPM</span><span class="p">),</span>
+<span class="nx">a</span><span class="w"> </span><span class="nx">pseudo</span><span class="o">-</span><span class="nx">GIF</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">does</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">LZW</span><span class="w"> </span><span class="nx">encoding</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="nx">XML</span><span class="o">-</span><span class="nx">based</span>
+<span class="nx">Scalable</span><span class="w"> </span><span class="nx">Vector</span><span class="w"> </span><span class="nx">Graphics</span><span class="w"> </span><span class="nx">format</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">Adobe</span><span class="w"> </span><span class="nx">Illustrator</span><span class="p">,</span>
+<span class="nx">Postscript</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">Encapsulated</span><span class="w"> </span><span class="nx">Postscript</span><span class="w"> </span><span class="p">(</span><span class="nx">EPS</span><span class="p">)</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">edited</span><span class="w"> </span><span class="nx">with</span>
+<span class="nx">idraw</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="nx">CGM</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">(</span><span class="nx">by</span><span class="w"> </span><span class="k">default</span><span class="p">,</span><span class="w"> </span><span class="nx">confirming</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">WebCGM</span><span class="w"> </span><span class="nx">profile</span><span class="p">),</span>
+<span class="nx">the</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">drawing</span><span class="w"> </span><span class="nx">editor</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Hewlett</span><span class="o">-</span><span class="nx">Packard</span><span class="w"> </span><span class="nx">PCL</span><span class="w"> </span><span class="mi">5</span>
+<span class="nx">printer</span><span class="w"> </span><span class="nx">language</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Hewlett</span><span class="o">-</span><span class="nx">Packard</span><span class="w"> </span><span class="nx">Graphics</span><span class="w"> </span><span class="nx">Language</span><span class="p">,</span><span class="w"> </span><span class="nx">ReGIS</span><span class="w"> </span><span class="nx">graphics</span>
+<span class="nx">format</span><span class="w"> </span><span class="p">(</span><span class="nx">which</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">displayed</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">dxterm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">terminal</span><span class="w"> </span><span class="nx">emulator</span><span class="w"> </span><span class="k">or</span>
+<span class="nx">by</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">VT330</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">VT340</span><span class="w"> </span><span class="nx">terminal</span><span class="p">),</span><span class="w"> </span><span class="nx">Tektronix</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">(</span><span class="nx">which</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">displayed</span>
+<span class="nx">by</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">xterm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">terminal</span><span class="w"> </span><span class="nx">emulator</span><span class="p">),</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">device</span><span class="o">-</span><span class="nx">independent</span><span class="w"> </span><span class="nx">GNU</span><span class="w"> </span><span class="nx">metafile</span>
+<span class="nx">format</span><span class="w"> </span><span class="nx">itself</span><span class="p">.</span>
+</code></pre></div>
+
+<p>pdf</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Popular</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="n">readers</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Adobe</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="n">viewer</span><span class="p">,</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">often</span><span class="w"> </span><span class="n">callable</span><span class="w"> </span><span class="n">from</span>
+<span class="n">Web</span><span class="w"> </span><span class="n">browsers</span><span class="p">;</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">GhostScript</span><span class="o">-</span><span class="n">based</span><span class="w"> </span><span class="n">gv</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">utility</span><span class="p">;</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">xpdf</span><span class="w"> </span><span class="n">program</span><span class="o">.</span>
+
+<span class="w">    </span><span class="n">The</span><span class="w"> </span><span class="n">xpdf</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">software</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">related</span><span class="w"> </span><span class="n">utilities</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">pdftops</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">pdftotext</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">pdfinfo</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">pdffonts</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">pdftoppm</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">pdfimages</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">xpdfrc</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="w">    </span><span class="ow">and</span><span class="w"> </span><span class="n">documentation</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">copyright</span><span class="w"> </span><span class="mi">1996</span><span class="o">-</span><span class="mi">2004</span><span class="w"> </span><span class="n">Glyph</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Cog</span><span class="p">,</span><span class="w"> </span><span class="n">LLC</span><span class="o">.</span><span class="w"> </span><span class="n">at</span>
+<span class="w">    </span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">foolabs</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">xpdf</span><span class="o">/</span>
+
+<span class="n">The</span><span class="w"> </span><span class="n">GhostScript</span><span class="o">-</span><span class="n">based</span><span class="w"> </span><span class="n">tools</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="nb">convert</span><span class="w"> </span><span class="n">PDF</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">PostScript</span><span class="w"> </span><span class="k">as</span>
+<span class="n">well</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">view</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">files</span><span class="o">.</span>
+</code></pre></div>
+
+<p>cgmt</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">The</span><span class="w"> </span><span class="nx">ralcgm</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">gplot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">packages</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">two</span><span class="w"> </span><span class="nx">very</span><span class="w"> </span><span class="nx">complete</span><span class="w"> </span><span class="nx">CGM</span><span class="w"> </span><span class="nx">viewers</span><span class="p">.</span>
+
+<span class="nx">ppm</span><span class="p">,</span><span class="nx">pbm</span><span class="w"> </span><span class="p">(</span><span class="k">and</span><span class="w"> </span><span class="nx">p1</span><span class="p">,</span><span class="nx">p3</span><span class="p">,</span><span class="nx">p4</span><span class="p">,</span><span class="nx">p6</span><span class="p">)</span>
+
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="nx">p1</span><span class="o">/</span><span class="nx">pbm</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Poskanzer</span><span class="w"> </span><span class="p">(</span><span class="nx">pbmplus</span><span class="o">/</span><span class="nx">netplus</span><span class="p">)</span><span class="w"> </span><span class="nx">portable</span><span class="w"> </span><span class="nx">ASCII</span><span class="w"> </span><span class="nx">bitmap</span><span class="w"> </span><span class="nx">file</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="nx">p3</span><span class="o">/</span><span class="nx">ppm</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Poskanzer</span><span class="w"> </span><span class="nx">portable</span><span class="w"> </span><span class="nx">ASCII</span><span class="w"> </span><span class="nx">pixmap</span><span class="w"> </span><span class="nx">file</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="nx">p4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Poskanzer</span><span class="w"> </span><span class="nx">portable</span><span class="w"> </span><span class="nx">binary</span><span class="w"> </span><span class="nx">bitmap</span><span class="w"> </span><span class="nx">file</span>
+<span class="w">  </span><span class="o">*</span><span class="w"> </span><span class="nx">p6</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Poskanzer</span><span class="w"> </span><span class="nx">portable</span><span class="w"> </span><span class="nx">binary</span><span class="w"> </span><span class="nx">pixmap</span><span class="w"> </span><span class="nx">file</span>
+
+<span class="nx">The</span><span class="w"> </span><span class="nx">NetPBM</span><span class="w"> </span><span class="kn">package</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">available</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">almost</span><span class="w"> </span><span class="nx">every</span><span class="w"> </span><span class="nx">platform</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">lets</span>
+<span class="nx">you</span><span class="w"> </span><span class="nx">convert</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Poskanzer</span><span class="w"> </span><span class="nx">portable</span><span class="w"> </span><span class="nx">pixmap</span><span class="w"> </span><span class="p">(</span><span class="nx">PPM</span><span class="p">)</span><span class="w"> </span><span class="nx">files</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">just</span><span class="w"> </span><span class="nx">about</span>
+<span class="nx">any</span><span class="w"> </span><span class="nx">pixmap</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">bitmap</span><span class="w"> </span><span class="nx">format</span><span class="p">,</span><span class="w"> </span><span class="nx">including</span><span class="w"> </span><span class="nx">PNG</span><span class="p">,</span><span class="w"> </span><span class="nx">JPEG</span><span class="p">,</span><span class="w"> </span><span class="nx">GIF</span><span class="o">/</span><span class="nx">PseudoGIF</span><span class="p">,</span><span class="w"> </span><span class="nx">BPM</span><span class="p">,</span>
+<span class="o">...</span><span class="p">..</span><span class="w"> </span><span class="nx">Other</span><span class="w"> </span><span class="nx">popular</span><span class="w"> </span><span class="nx">pixmap</span><span class="w"> </span><span class="nx">products</span><span class="w"> </span><span class="nx">such</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">ImageMagick</span><span class="p">,</span><span class="w"> </span><span class="nx">gv</span><span class="p">,</span><span class="w"> </span><span class="o">...</span><span class="w"> </span><span class="nx">can</span>
+<span class="nx">read</span><span class="w"> </span><span class="nx">PPM</span><span class="w"> </span><span class="nx">files</span><span class="p">,</span><span class="w"> </span><span class="nx">convert</span><span class="w"> </span><span class="nx">them</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">often</span><span class="w"> </span><span class="nx">edit</span><span class="w"> </span><span class="nx">them</span><span class="p">.</span>
+</code></pre></div>
+
+<h2 id="html">HTML:</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">The</span><span class="w"> </span><span class="nv">vml</span>,<span class="w"> </span><span class="nv">canvas</span>,<span class="w"> </span><span class="nv">svg</span>,<span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">usemap</span><span class="w"> </span><span class="nv">drivers</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">primarily</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">generate</span>
+<span class="nv">graphics</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">inclusion</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">HTML</span><span class="w"> </span><span class="nv">documents</span>.<span class="w"> </span><span class="nv">Browsers</span><span class="w"> </span><span class="nv">such</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">Opera</span>,<span class="w"> </span><span class="nv">Safari</span>,
+<span class="nv">Foxfire</span>,<span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">Chrome</span><span class="w"> </span><span class="nv">can</span><span class="w"> </span><span class="nv">easily</span><span class="w"> </span><span class="nv">incorporate</span><span class="w"> </span><span class="nv">graphics</span><span class="w"> </span><span class="nv">generated</span><span class="w"> </span><span class="nv">using</span><span class="w"> </span><span class="nv">the</span>
+<span class="nv">SVG</span><span class="w"> </span><span class="ss">(</span><span class="nv">Scalable</span><span class="w"> </span><span class="nv">Vector</span><span class="w"> </span><span class="nv">Graphics</span><span class="ss">)</span><span class="w"> </span><span class="nv">format</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">HTML5</span><span class="w"> </span><span class="nv">CANVAS</span><span class="w"> </span><span class="nv">element</span>.
+</code></pre></div>
+
+<p>usemap</p>
+<div class="codehilite"><pre><span></span><code><span class="n">This</span><span class="w"> </span><span class="n">driver</span><span class="w"> </span><span class="n">writes</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">edges</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">any</span><span class="w"> </span><span class="n">polygon</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span>
+<span class="n">used</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">HTML</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="n">map</span><span class="p">;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">sizes</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">plot</span><span class="w"> </span><span class="n">generated</span>
+<span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ppm</span><span class="w"> </span><span class="n">driver</span><span class="p">;</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">clickable</span><span class="w"> </span><span class="n">regions</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">pixmap</span><span class="w"> </span><span class="n">when</span>
+<span class="n">converted</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">GIF</span><span class="w"> </span><span class="n">image</span><span class="p">.</span>
+
+<span class="n">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">polygons</span><span class="w"> </span><span class="n">overlap</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reverse</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">polygon</span>
+<span class="n">definitions</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">numeric</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="o">&lt;</span><span class="n">AREA</span><span class="o">&gt;</span><span class="w"> </span><span class="n">titles</span>
+<span class="n">should</span><span class="w"> </span><span class="n">help</span><span class="p">.</span>
+</code></pre></div>
+
+<p>vml</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">The</span><span class="w"> </span><span class="nx">VML</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">read</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="nx">MicroSoft</span><span class="w"> </span><span class="nx">Office</span><span class="w"> </span><span class="mi">2000</span><span class="o">+</span><span class="w"> </span><span class="nx">product</span><span class="w"> </span><span class="k">and</span>
+<span class="nx">MicroSoft</span><span class="err">'</span><span class="nx">s</span><span class="w"> </span><span class="nx">web</span><span class="w"> </span><span class="nx">browser</span><span class="w"> </span><span class="nx">Internet</span><span class="w"> </span><span class="nx">Explorer</span><span class="p">.</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">plots</span><span class="w"> </span><span class="nx">contain</span><span class="w"> </span><span class="nx">more</span><span class="w"> </span><span class="nx">than</span>
+<span class="nx">about</span><span class="w"> </span><span class="mi">9766</span><span class="w"> </span><span class="nx">vectors</span><span class="w"> </span><span class="nx">MicroSoft</span><span class="w"> </span><span class="nx">Word</span><span class="w"> </span><span class="nx">starts</span><span class="w"> </span><span class="nx">choking</span><span class="w"> </span><span class="p">(</span><span class="nx">still</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2005</span><span class="p">),</span>
+<span class="nx">but</span><span class="w"> </span><span class="nx">otherwise</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">very</span><span class="w"> </span><span class="nx">nice</span><span class="w"> </span><span class="nx">way</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">generate</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">MicroSoft</span>
+<span class="nx">products</span><span class="p">.</span>
+
+<span class="nx">I</span><span class="w"> </span><span class="nx">generally</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">machine</span><span class="w"> </span><span class="nx">running</span><span class="w"> </span><span class="nx">MicroSoft</span><span class="w"> </span><span class="nx">Windows</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">installing</span>
+<span class="nx">CygWin</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">X11</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="p">(</span><span class="k">and</span><span class="w"> </span><span class="nx">ralcgm</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">GhostScript</span><span class="w"> </span><span class="nx">software</span><span class="p">,</span>
+<span class="nx">the</span><span class="w"> </span><span class="nx">GNU</span><span class="w"> </span><span class="nx">plotutils</span><span class="w"> </span><span class="nx">packages</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">netpbm</span><span class="p">).</span>
+</code></pre></div>
+
+<p>xfig</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">The</span><span class="w"> </span><span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">command</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">edit</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="nx">generated</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span>
+<span class="nx">M_draw</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="kn">library</span><span class="p">;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">convert</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="nx">format</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="nx">to</span>
+<span class="nx">many</span><span class="w"> </span><span class="nx">other</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="nx">formats</span><span class="p">.</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">generating</span><span class="w"> </span><span class="nx">pixmaps</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">PPM</span>
+<span class="nx">driver</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">want</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">them</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">maps</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">HTML</span><span class="w"> </span><span class="nx">documents</span><span class="w"> </span><span class="nx">the</span>
+<span class="nx">usemap</span><span class="w"> </span><span class="nx">driver</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">used</span><span class="p">.</span>
+
+<span class="nx">If</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">have</span><span class="w"> </span><span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">installed</span><span class="p">,</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">find</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">calling</span><span class="w"> </span><span class="nx">fig2dev</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nx">allows</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">generate</span><span class="w"> </span><span class="nx">many</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="nx">formats</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">single</span><span class="w"> </span><span class="nx">file</span><span class="p">,</span>
+<span class="nx">including</span><span class="w"> </span><span class="nx">LaTex</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">encapsulated</span><span class="w"> </span><span class="nx">PostScript</span><span class="p">.</span>
+
+<span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">X11</span><span class="w"> </span><span class="nx">Windows</span><span class="w"> </span><span class="nx">application</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">interactively</span>
+<span class="nx">edit</span><span class="w"> </span><span class="nx">figures</span><span class="p">.</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">HELP</span><span class="w"> </span><span class="nx">utility</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">provides</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span>
+<span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">(</span><span class="k">as</span><span class="w"> </span><span class="nx">well</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="nx">guide</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">many</span><span class="w"> </span><span class="nx">other</span><span class="w"> </span><span class="nx">documents</span><span class="p">).</span>
+
+<span class="nx">Unfortunately</span><span class="p">,</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">manual</span><span class="w"> </span><span class="nx">indicates</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="nx">defined</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="nx">must</span>
+<span class="nx">be</span><span class="w"> </span><span class="nx">defined</span><span class="w"> </span><span class="nx">before</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="nx">other</span><span class="w"> </span><span class="nx">Fig</span><span class="w"> </span><span class="nx">objects</span><span class="p">.</span><span class="w"> </span><span class="nx">By</span><span class="w"> </span><span class="k">default</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="nx">are</span>
+<span class="nx">defined</span><span class="p">.</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">undefined</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">they</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">assigned</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">dash</span><span class="w"> </span><span class="nx">pattern</span>
+<span class="k">or</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">fill</span><span class="w"> </span><span class="nx">pattern</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">help</span><span class="w"> </span><span class="nx">distinguish</span><span class="w"> </span><span class="nx">them</span><span class="p">.</span><span class="w"> </span><span class="nx">Use</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">hardware</span><span class="w"> </span><span class="nx">dash</span><span class="w"> </span><span class="k">and</span>
+<span class="nx">M_draw</span><span class="w"> </span><span class="nx">software</span><span class="w"> </span><span class="nx">dash</span><span class="w"> </span><span class="nx">could</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">confusing</span><span class="p">.</span>
+
+<span class="nx">Also</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="nx">driver</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">drawn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">series</span>
+<span class="nx">of</span><span class="w"> </span><span class="nx">move</span><span class="o">-</span><span class="nx">draw</span><span class="w"> </span><span class="nx">vectors</span><span class="p">,</span><span class="w"> </span><span class="nx">which</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">make</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">files</span><span class="w"> </span><span class="nx">relatively</span><span class="w"> </span><span class="nx">very</span><span class="w"> </span><span class="nx">large</span><span class="p">.</span>
+
+<span class="nx">multiple</span><span class="w"> </span><span class="nx">pages</span><span class="w"> </span><span class="nx">appear</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">only</span><span class="w"> </span><span class="nx">work</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">PostScript</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">PDF</span><span class="w"> </span><span class="nx">drivers</span>
+<span class="nx">of</span><span class="w"> </span><span class="nx">xfig</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">even</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nx">pages</span><span class="w"> </span><span class="nx">must</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">positive</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">left</span>
+<span class="nx">to</span><span class="w"> </span><span class="nx">right</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">top</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">bottom</span><span class="p">,</span><span class="w"> </span><span class="nx">printing</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="nx">pages</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">rectangular</span><span class="w"> </span><span class="nx">area</span><span class="p">.</span>
+
+<span class="nx">Alternatively</span><span class="p">,</span><span class="w"> </span><span class="nx">could</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">depth</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">keep</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mi">999</span><span class="w"> </span><span class="nx">pages</span><span class="w"> </span><span class="nx">separate</span>
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<p>Sample program:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_vinit</span>
+<span class="w">   </span><span class="nx">use</span><span class="w"> </span><span class="nx">M_draw</span>
+<span class="w">   </span><span class="nx">use</span><span class="w"> </span><span class="nx">ISO_C_BINDING</span>
+<span class="w">   </span><span class="nx">implicit</span><span class="w"> </span><span class="nx">none</span>
+<span class="w">   </span><span class="nx">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">ios</span><span class="p">,</span><span class="w"> </span><span class="nx">idum</span>
+<span class="w">   </span><span class="nx">character</span><span class="p">(</span><span class="nx">len</span><span class="p">=</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">device</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">read</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">device</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="nx">mode</span>
+<span class="w">   </span><span class="nx">print</span><span class="o">*</span><span class="p">,</span><span class="err">'</span><span class="nx">Enter</span><span class="w"> </span><span class="nx">output</span><span class="w"> </span><span class="nx">device</span><span class="p">:</span><span class="err">'</span>
+<span class="w">   </span><span class="nx">read</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="err">'</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="err">'</span><span class="p">,</span><span class="nx">iostat</span><span class="p">=</span><span class="nx">ios</span><span class="p">)</span><span class="nx">device</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nx">ios</span><span class="p">.</span><span class="nx">ne</span><span class="m m-Double">.0</span><span class="p">)</span><span class="nx">device</span><span class="p">=</span><span class="sc">' '</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vinit</span><span class="p">(</span><span class="nx">device</span><span class="p">)</span>
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">drawing</span><span class="w"> </span><span class="nx">surface</span><span class="w"> </span><span class="k">is</span>
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">square</span><span class="w"> </span><span class="nx">ranging</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">both</span>
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">X</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">Y</span><span class="w"> </span><span class="nx">axis</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">font</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">large</span><span class="w"> </span><span class="nx">hardware</span><span class="w"> </span><span class="nx">font</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">font</span><span class="p">(</span><span class="err">'</span><span class="nx">large</span><span class="err">'</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">black</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_BLACK</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">clear</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="nx">color</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">clear</span><span class="p">()</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">we</span><span class="w"> </span><span class="nx">want</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">green</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">color</span><span class="p">(</span><span class="nx">D_GREEN</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">horizontal</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="o">-</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="w"> </span><span class="m m-Double">0.0</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="m m-Double">1.0</span><span class="p">,</span><span class="w"> </span><span class="m m-Double">0.0</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">pause</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">some</span><span class="w"> </span><span class="nx">input</span>
+<span class="w">   </span><span class="nx">idum</span><span class="p">=</span><span class="nx">getkey</span><span class="p">()</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">line</span><span class="w"> </span><span class="nx">along</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="w"> </span><span class="m m-Double">0.0</span><span class="p">)</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">draw2</span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="w"> </span><span class="m m-Double">1.0</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">move</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">middle</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">screen</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">move2</span><span class="p">(</span><span class="m m-Double">0.0</span><span class="p">,</span><span class="w"> </span><span class="m m-Double">0.0</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">draw</span><span class="w"> </span><span class="err">'</span><span class="nx">Hello</span><span class="err">'</span><span class="w"> </span><span class="nx">starting</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">origin</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">drawstr</span><span class="p">(</span><span class="err">'</span><span class="nx">Hello</span><span class="err">'</span><span class="p">)</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w"> </span><span class="nx">pause</span><span class="w"> </span><span class="nx">again</span>
+<span class="w">   </span><span class="nx">idum</span><span class="p">=</span><span class="nx">getkey</span><span class="p">()</span>
+
+<span class="w">   </span><span class="p">!</span><span class="w">  </span><span class="nx">wrap</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">exit</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="nx">mode</span>
+<span class="w">   </span><span class="nx">call</span><span class="w"> </span><span class="nx">vexit</span><span class="p">()</span>
+
+<span class="w">   </span><span class="nx">end</span><span class="w"> </span><span class="nx">program</span><span class="w"> </span><span class="nx">demo_vinit</span>
+</code></pre></div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-device"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>device</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">subroutine </span><span class="n">draw_vinit</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">device</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">env_val</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">env_len</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span>
+<span class="w">      </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">is_open</span>
+<span class="w">      </span><span class="k">inquire</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">draw_unit</span><span class="p">,</span><span class="w"> </span><span class="n">opened</span><span class="o">=</span><span class="n">is_open</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">is_open</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">draw_unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_unit</span>
+<span class="w">         </span><span class="k">call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="s2">"M_DRAW_OUTPUT"</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="o">=</span><span class="n">env_val</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">env_len</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ios</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">env_len</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">draw_voutput</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">env_val</span><span class="p">))</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      call </span><span class="n">draw_getdev</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">initialized</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">draw_vexit</span><span class="p">()</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">allocated_stacks</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">allocated_stacks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="k">allocate</span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">transmat</span><span class="p">,</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">,</span><span class="w"> </span><span class="n">vdevice</span><span class="p">%</span><span class="n">viewport</span><span class="p">)</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">transmat</span><span class="p">%</span><span class="n">back</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">back</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">viewport</span><span class="p">%</span><span class="n">back</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">clipoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="k">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">upset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">cpW</span><span class="p">(</span><span class="n">D_W</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_real32</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">style</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">style</span><span class="p">)</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">dash_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">hatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">backface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">justify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ior</span><span class="p">(</span><span class="n">D_LEFT</span><span class="p">,</span><span class="w"> </span><span class="n">D_BOTTOM</span><span class="p">)</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">bold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">inbackbuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">exvp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">softtext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">fixedwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">skew</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">hatchcos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">hatchsin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">hatchpitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">textcos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">textsin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">dash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">adist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_real32</span>
+<span class="w">      </span><span class="n">vdevice</span><span class="p">%</span><span class="n">attr</span><span class="p">%</span><span class="n">a</span><span class="p">%</span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">dev</span><span class="p">%</span><span class="n">Vinit</span><span class="p">()</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">initialized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">writestoprocess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">inobject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="n">vdevice</span><span class="p">%</span><span class="n">inpolygon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="k">call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="s2">"VEXPANDVP"</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">env_len</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ios</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">draw_expandviewport</span><span class="p">()</span>
+<span class="w">         </span><span class="k">call </span><span class="n">draw_viewport</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0_real32</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_real32</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0_real32</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_real32</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">draw_identmatrix</span><span class="p">(</span><span class="n">vdevice</span><span class="p">%</span><span class="n">transmat</span><span class="p">%</span><span class="n">m</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">draw_move</span><span class="p">(</span><span class="mf">0.0_real32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_real32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_real32</span><span class="p">)</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">draw_hershfont</span><span class="p">(</span><span class="s2">"futura.l"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">draw_font</span><span class="p">(</span><span class="s2">"small"</span><span class="p">)</span>
+<span class="w">         </span><span class="k">else</span>
+<span class="k">            call </span><span class="n">draw_textsize</span><span class="p">(</span><span class="mf">0.05_real32</span><span class="p">,</span><span class="w"> </span><span class="mf">0.05_real32</span><span class="p">)</span>
+<span class="w">         </span><span class="k">end if</span>
+<span class="k">      else</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">error_unit</span><span class="p">,</span><span class="w"> </span><span class="s1">'(A)'</span><span class="p">)</span><span class="w"> </span><span class="s2">"draw: error while setting up device"</span>
+<span class="w">         </span><span class="k">error stop </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">   end subroutine </span><span class="n">draw_vinit</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_drawtran
+ was developed by John S. Urban<br>              &copy; 2026 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2026-11-23 00:37 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
